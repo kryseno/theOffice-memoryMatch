@@ -1,0 +1,134 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+body {
+    height: 100%;
+    width: 100%;
+    padding-top: 0;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Montserrat, sans-serif;
+    font-size: 2vmin;
+    background-image: url('images/dunderMifflinPainting.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 20%;
+    background-size: cover;
+}
+header{
+    position: absolute;
+    width: 85%;
+    height: 20%;
+    left: 8%;
+    /*top: 2%;*/
+    display: block;
+    color: white;
+    /*text-align: center;*/
+    border: 1px solid navy;
+    background: rgba(255, 255, 255, 0.5);
+    background-image: url('images/the_office_sign.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#logo{
+    position: absolute;
+    width: 18%;
+    left: 3.2%;
+    top: 2%;
+}
+h1{
+    position: relative;
+    text-align: right;
+    right: 46%;
+    font-size: 2.6em;
+    top: -13%;
+}
+nav{
+    position: absolute;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    height: 5vh;
+    width: 100%;
+    top: 101%;
+}
+nav ul{
+    margin: 0;
+    padding: 0;
+}
+nav li{
+    display: inline-block;
+    top: 5%;
+    list-style-type: none;
+    text-align: center;
+    margin: 0 40px;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top: 4px;
+    letter-spacing: 3px;
+    text-transform: capitalize;
+}
+a:link{
+    color: white;
+}
+a:visited{
+    color: white;
+}
+a:hover{
+    color: dimgray;
+}
+#peoplePersonsImg{
+    position: absolute;
+    width: 18%;
+    height: 97%;
+    right: 3.4%;
+    top: 2%;
+}
+.stats_container,
+.game-area {
+    position: absolute;
+    border: 1px solid navy;
+    top: 25.3%;
+    height: 74%;
+    background: rgba(255, 255, 255, 0.5);
+}
+.stats_container{
+    width: 20%;
+    left: 8%;
+}
+.game-area{
+    display: inline-block;
+    width: 62%;
+    right: 7%;
+}
+.card{
+    position: relative;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: inline-block;
+    width: 110px;
+    height: 80px;
+    margin: 15px;
+    padding-top: 58px;
+    left: 2.5%;
+    top: 0.5%;
+}
+.back,
+.front {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.back{
+    background-image: url('images/the_office_sign.jpg');
+    background-color: black;
+}
+.front-test{
+    background-image: url('images/test_img.jpeg');
+}
+.front-test3{
+    background-image: url('images/test_img_3.jpg');
+}

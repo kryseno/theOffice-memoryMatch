@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Memory Match Game</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>
+        <script>
+            $(document).ready(function(){
+                makeCardDivs();
+                function makeCardDivs() {
+                    var game_area = $(".game-area");
+                    for (var i = 0; i < 18; i++) {
+                        var new_card = $("<div>").addClass("card back").click(function(){
+                            $(this).toggleClass("front-test");
+                        });
+                        $(game_area).append(new_card);
+                    };
+                };
+            });
+        </script>
+    </head>
+    <body>
+
+        <!--<div class="wrapper">-->
+            <header>
+                <img id="logo" src="images/dunderMifflin.png">
+                <h1>Memory<br>Match</h1>
+                <img id="peoplePersonsImg" src="images/peoplePersons.jpg">
+                <nav>
+                    <ul>
+                        <li><a href="">settings</a></li>
+                        <li><a href="about.html">about</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <div class="stats_container">
+                <div class="games-played">
+                    <div class="label">Games Played</div>
+                    <div class="value"></div>
+                </div>
+                <div class="attempts">
+                    <div class="label">Attempts</div>
+                    <div class="value"></div>
+                </div>
+                <div class="accuracy">
+                    <div class="label">Accuracy</div>
+                    <div class="value"></div>
+                </div>
+                <button class="reset">Reset Game</button>
+            </div>
+
+            <div class="game-area">
+                <!-- card 1 for now -->
+                <!-- card 2 for now -->
+                <!-- card 3 for now -->
+            </div>
+        <!--</div>-->
+
+    </body>
+</html>
