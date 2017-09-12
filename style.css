@@ -2,7 +2,7 @@ html{
     height: 100%;
     width: 100%;
 }
-body {
+body{
     height: 100%;
     width: 100%;
     padding-top: 0;
@@ -11,6 +11,7 @@ body {
     margin-right: auto;
     font-family: Montserrat, sans-serif;
     font-size: 2vmin;
+    box-sizing: border-box;
     background-image: url('images/dunderMifflinPainting.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -22,11 +23,9 @@ header{
     width: 85%;
     height: 20%;
     left: 8%;
-    /*top: 2%;*/
     display: block;
     color: white;
-    /*text-align: center;*/
-    border: 1px solid navy;
+    border: 1px solid black;
     background: rgba(255, 255, 255, 0.5);
     background-image: url('images/the_office_sign.jpg');
     background-position: center center;
@@ -44,10 +43,18 @@ h1{
     text-align: right;
     right: 46%;
     font-size: 2.6em;
-    top: -13%;
+    bottom: 13%;
+}
+h3{
+    position: relative;
+    text-align: right;
+    right: 46%;
+    bottom: 31%;
+    font-size: 2em;
 }
 nav{
     position: absolute;
+    margin: 1px 0;
     display: inline-block;
     background: rgba(0, 0, 0, 0.8);
     text-align: center;
@@ -88,9 +95,11 @@ a:hover{
     top: 2%;
 }
 .stats_container,
-.game-area {
+.game-area{
     position: absolute;
-    border: 1px solid navy;
+    margin-top: 3px;
+    padding-top: 5px;
+    border: 1px solid black;
     top: 25.3%;
     height: 74%;
     background: rgba(255, 255, 255, 0.5);
@@ -98,11 +107,20 @@ a:hover{
 .stats_container{
     width: 20%;
     left: 8%;
+    text-align: center;
+    text-transform: uppercase;
 }
 .game-area{
     display: inline-block;
     width: 62%;
     right: 7%;
+}
+.label{
+    font-size: 1em;
+    font-weight: bold;
+}
+.reset{
+    font-size: 1em;
 }
 .card{
     position: relative;
@@ -117,7 +135,7 @@ a:hover{
     top: 0.5%;
 }
 .back,
-.front {
+.front{
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -126,9 +144,17 @@ a:hover{
     background-image: url('images/the_office_sign.jpg');
     background-color: black;
 }
-.front-test{
-    background-image: url('images/test_img.jpeg');
+.front-michael{
+    background-image: url('images/michael.jpg');
 }
-.front-test3{
-    background-image: url('images/test_img_3.jpg');
+.front-dwight{
+    background-image: url('images/dwight.jpg');
+}
+/*About Me, .html*/
+#krystal_img{
+    border: 1px solid black;
+}
+#game_description,
+#skills-needed{
+    display: inline-block;
 }

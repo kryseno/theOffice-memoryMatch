@@ -7,12 +7,14 @@
         <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>
         <script>
             $(document).ready(function(){
+//                var pictures = ['images/michael.jpg',
+//                'images/dwight.jpg'];
                 makeCardDivs();
                 function makeCardDivs() {
                     var game_area = $(".game-area");
                     for (var i = 0; i < 18; i++) {
                         var new_card = $("<div>").addClass("card back").click(function(){
-                            $(this).toggleClass("front-test");
+                            $(this).toggleClass("front-michael");
                         });
                         $(game_area).append(new_card);
                     };
@@ -22,11 +24,10 @@
     </head>
     <body>
 
-        <!--<div class="wrapper">-->
             <header>
-                <img id="logo" src="images/dunderMifflin.png">
-                <h1>Memory<br>Match</h1>
-                <img id="peoplePersonsImg" src="images/peoplePersons.jpg">
+                <img id="logo" src="images/dunderMifflin.png" alt="Dunder Mifflin Logo">
+                <h1>Memory<br>Match</h1><h3>Game</h3>
+                <img id="peoplePersonsImg" src="images/peoplePersons.jpg" alt="The People Person's Paper People">
                 <nav>
                     <ul>
                         <li><a href="">settings</a></li>
@@ -38,25 +39,23 @@
             <div class="stats_container">
                 <div class="games-played">
                     <div class="label">Games Played</div>
+                    <hr>
                     <div class="value"></div>
                 </div>
                 <div class="attempts">
                     <div class="label">Attempts</div>
+                    <hr>
                     <div class="value"></div>
                 </div>
                 <div class="accuracy">
                     <div class="label">Accuracy</div>
+                    <hr>
                     <div class="value"></div>
                 </div>
                 <button class="reset">Reset Game</button>
             </div>
 
-            <div class="game-area">
-                <!-- card 1 for now -->
-                <!-- card 2 for now -->
-                <!-- card 3 for now -->
-            </div>
-        <!--</div>-->
+            <div class="game-area"></div>
 
     </body>
 </html>
