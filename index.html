@@ -7,26 +7,29 @@
         <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>
         <script>
             $(document).ready(initializeApplication);
-            var the_first_card_clicked = null;
-            var the_second_card_clicked = null;
+            var first_card_clicked = null;
+            var second_card_clicked = null;
+            var total_possible_matches = 2;
+            var match_counter = 0;
 
             function initializeApplication(){
-                $(".card").click(handleClick);
+                $(".card").click(card_clicked);
             }
-            function handleClick(){
+            function card_clicked(){
                 console.log('handle click called');
                 $(this).addClass('reveal');
                 console.log('card clicked');
-                if(the_first_card_clicked === null){
+                if(first_card_clicked === null){
                     console.log('first card was clicked');
-                    the_first_card_clicked = $(this);
+                    first_card_clicked = $(this);
                     return;
                 } else {
                     console.log('second card was clicked');
-                    the_second_card_clicked = $(this);
-                }
-                if(the_first_card_clicked === the_second_card_clicked){
+                    second_card_clicked = $(this);
+                } if(first_card_clicked === second_card_clicked){
                     console.log('the cards matched!');
+                    match_counter = 1;
+                    var first_card_clicked = null;
                 } else {
                     console.log('not a match');
                 }
