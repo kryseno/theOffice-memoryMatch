@@ -6,27 +6,54 @@
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>
         <script>
-            $(document).ready(function(){
-//                var pictures = ['images/michael.jpg',
-//                'images/dwight.jpg'];
-                makeCardDivs();
-                function makeCardDivs() {
-                    var game_area = $(".game-area");
-                    for (var i = 0; i < 18; i++) {
-                        var new_card = $("<div>").addClass("card back").click(function(){
-                            $(this).toggleClass("front-michael");
-                        });
-                        $(game_area).append(new_card);
-                    };
-                };
-            });
+            $(document).ready(initializeApplication);
+            var the_first_card_clicked = null;
+            var the_second_card_clicked = null;
+
+            function initializeApplication(){
+                $(".card").click(handleClick);
+            }
+            function handleClick(){
+                console.log('handle click called');
+                $(this).addClass('reveal');
+                console.log('card clicked');
+                if(the_first_card_clicked === null){
+                    console.log('first card was clicked');
+                    the_first_card_clicked = $(this);
+                    return;
+                } else {
+                    console.log('second card was clicked');
+                    the_second_card_clicked = $(this);
+                }
+                if(the_first_card_clicked === the_second_card_clicked){
+                    console.log('the cards matched!');
+                } else {
+                    console.log('not a match');
+                }
+            }
+
+//            PREVIOUS
+//            $(document).ready(function(){
+////                var pictures = ['images/michael.jpg',
+////                'images/dwight.jpg'];
+//                makeCardDivs();
+//                function makeCardDivs() {
+//                    var game_area = $(".game-area");
+//                    for (var i = 0; i < 18; i++) {
+//                        var new_card = $("<div>").addClass("card back").click(function(){
+//                            $(this).toggleClass("front-michael");
+//                        });
+//                        $(game_area).append(new_card);
+//                    };
+//                };
+//            });
         </script>
     </head>
     <body>
 
             <header>
                 <img id="logo" src="images/dunderMifflin.png" alt="Dunder Mifflin Logo">
-                <h1>Memory<br>Match</h1><h3>Game</h3>
+                <div id="title"><h1>Memory<br>Match</h1><h3>Game</h3></div>
                 <img id="peoplePersonsImg" src="images/peoplePersons.jpg" alt="The People Person's Paper People">
                 <nav>
                     <ul>
@@ -55,7 +82,16 @@
                 <button class="reset">Reset Game</button>
             </div>
 
-            <div class="game-area"></div>
+            <div class="game-area">
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back"></div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back"></div>
+                </div>
+            </div>
 
     </body>
 </html>
