@@ -4,7 +4,6 @@
         <title>Memory Match Game</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>
         <script>
             var first_card_clicked = null;
             var second_card_clicked = null;
@@ -17,24 +16,57 @@
                 $(".card").click(card_clicked);
             }
             function card_clicked(){
-                console.log('handle click called');
+//                console.log('handle click called');
+                if($(this).hasClass('reveal')){
+                    console.log('this card has already been clicked');
+                    return;
+                }
                 $(this).addClass('reveal');
-                console.log('card clicked');
+//                console.log('card clicked');
+
                 if(first_card_clicked === null){
                     console.log('first card was clicked');
-                    first_card_clicked = $(this);
+                    first_card_clicked = this;
                     return;
                 } else {
                     console.log('second card was clicked');
-                    second_card_clicked = $(this);
-                } if(first_card_clicked.find('.front') === second_card_clicked.find('.front')){
-                    console.log('the cards matched!');
-                    match_counter = 1;
-                    first_card_clicked = null;
-                    second_card_clicked = null;
-                } else {
-                    console.log('not a match');
+                    second_card_clicked = this;
+
+                    if($(first_card_clicked).find('.front img').attr('src') === $(second_card_clicked).find('.front img').attr('src')){
+                        console.log('the cards matched!');
+                        match_counter++;
+                        console.log('match_counter: ' + match_counter);
+                        first_card_clicked = null;
+                        second_card_clicked = null;
+
+                        if(match_counter === total_possible_matches){
+                            console.log('You won!');
+                        } else {
+                            return;
+                        }
+
+                    } else {
+                        console.log('not a match');
+                        var timeOut = setTimeout(function () {
+                            $(first_card_clicked).removeClass('reveal');
+                            console.log('back of 1st card now shown');
+                            first_card_clicked = null;
+                            console.log('first_card_clicked is null');
+                            $(second_card_clicked).removeClass('reveal');
+                            console.log('back of 2nd card now shown');
+                            second_card_clicked = null;
+                            console.log('second_card_clicked is null');
+                        }, 2000);
+                        console.log('2 seconds passed');
+//
+//                        $('.card').off("click");
+//                        console.log('clicking cards disabled');
+//
+                        return timeOut;
+
+                    }
                 }
+
             }
 
 //            PREVIOUS
@@ -58,14 +90,18 @@
 
             <header>
                 <img id="logo" src="images/dunderMifflin.png" alt="Dunder Mifflin Logo">
-                <div id="title"><h1>Memory<br>Match</h1><h3>Game</h3></div>
+                <div class="center">
+                    <img id="office_sign" src="images/the_office_sign.jpg" alt="">
+                    <!--<div id="title"><h1>Memory<br>Match<br>Game</h1></div>-->
+                    <nav>
+                        <ul>
+                            <li><a href="">settings</a></li>
+                            <li><a href="about.html">about</a></li>
+                        </ul>
+                    </nav>
+                </div>
                 <img id="peoplePersonsImg" src="images/peoplePersons.jpg" alt="The People Person's Paper People">
-                <nav>
-                    <ul>
-                        <li><a href="">settings</a></li>
-                        <li><a href="about.html">about</a></li>
-                    </ul>
-                </nav>
+
             </header>
 
             <div class="stats_container">
@@ -89,12 +125,117 @@
 
             <div class="game-area">
                 <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
+                    <div class="front">
+                        <img src="images/michael.jpg" alt="michael">
+                    </div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="images/michael.jpg" alt="michael">
+                    </div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="images/dwight.jpg" alt="">
+                    </div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
                 </div>
                 <div class="card">
                     <div class="front"></div>
-                    <div class="back"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back"><img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front"></div>
+                    <div class="back">
+                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
+                    </div>
                 </div>
             </div>
 
