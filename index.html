@@ -48,6 +48,11 @@
                     } else {
                         console.log('not a match');
                         var timeOut = setTimeout(function () {
+//                            if($('.card').off("click")){
+//                                console.log('user cannot click any cards right now');
+//                                return;
+//                            }
+                            console.log('clicking cards disabled');
                             $(first_card_clicked).removeClass('reveal');
                             console.log('back of 1st card now shown');
                             first_card_clicked = null;
@@ -58,13 +63,13 @@
                             console.log('second_card_clicked is null');
                         }, 2000);
                         console.log('2 seconds passed');
-//
-//                        $('.card').off("click");
-//                        console.log('clicking cards disabled');
-//
-                        return timeOut;
 
+//                        function disableClicks(){
+//                            $('.card').unbind("click");
+//                        };
+                        return timeOut;
                     }
+//                    card_clicked();
                 }
 
             }
