@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
         <title>Memory Match Game</title>
@@ -7,72 +7,137 @@
         <script>
             var first_card_clicked = null;
             var second_card_clicked = null;
-            var total_possible_matches = 2;
-            var match_counter = 0;
-            $(document).ready(initializeApplication);
+            var disable_click = false;
+            var total_possible_matches = 9;
+            var matches = 0;
+            var attempts = 0;
+            var accuracy = 0;
+            var games_played = 0;
+            var allow_card_click = true;
 
+            $(document).ready(initializeApplication);
 
             function initializeApplication(){
                 $(".card").click(card_clicked);
             }
             function card_clicked(){
 //                console.log('handle click called');
+                if(!allow_card_click){
+                    return;
+                }
+
                 if($(this).hasClass('reveal')){
                     console.log('this card has already been clicked');
                     return;
                 }
+
                 $(this).addClass('reveal');
 //                console.log('card clicked');
 
                 if(first_card_clicked === null){
-                    console.log('first card was clicked');
+//                    console.log('first card was clicked');
                     first_card_clicked = this;
                     return;
                 } else {
-                    console.log('second card was clicked');
+//                    console.log('second card was clicked');
                     second_card_clicked = this;
+                    attempts++;
+                    console.log('attempt #: ' + attempts);
+
+                    display_stats();
+                    accuracy = Math.floor((matches / attempts) * 100) + '%';
+                    console.log('accuracy: ' + accuracy);
 
                     if($(first_card_clicked).find('.front img').attr('src') === $(second_card_clicked).find('.front img').attr('src')){
                         console.log('the cards matched!');
-                        match_counter++;
-                        console.log('match_counter: ' + match_counter);
-                        first_card_clicked = null;
-                        second_card_clicked = null;
+                        matches++;
+                        console.log('match_counter: ' + matches);
 
-                        if(match_counter === total_possible_matches){
+                        setTimeout(pause_after_matched, 1000);
+                        function pause_after_matched(){
+                            $(first_card_clicked).css('visibility', 'hidden');
+                            $(second_card_clicked).css('visibility', 'hidden');
+                            first_card_clicked = null;
+                            second_card_clicked = null;
+                        }
+
+                        if(matches === total_possible_matches){
                             console.log('You won!');
                         } else {
                             return;
                         }
 
                     } else {
+                        console.log("turning off click at "+window.performance.now());
+                        allow_card_click = false;
                         console.log('not a match');
                         var timeOut = setTimeout(function () {
-//                            if($('.card').off("click")){
-//                                console.log('user cannot click any cards right now');
-//                                return;
-//                            }
-                            console.log('clicking cards disabled');
+                            console.log('starting to flip back cards '+window.performance.now())
                             $(first_card_clicked).removeClass('reveal');
-                            console.log('back of 1st card now shown');
+//                            console.log('back of 1st card now shown');
                             first_card_clicked = null;
-                            console.log('first_card_clicked is null');
+//                            console.log('first_card_clicked is null');
                             $(second_card_clicked).removeClass('reveal');
-                            console.log('back of 2nd card now shown');
+//                            console.log('back of 2nd card now shown');
                             second_card_clicked = null;
-                            console.log('second_card_clicked is null');
+//                            console.log('second_card_clicked is null');
+                            allow_card_click = true;
+                            console.log("done flipping back cards" +window.performance.now())
                         }, 2000);
                         console.log('2 seconds passed');
 
-//                        function disableClicks(){
-//                            $('.card').unbind("click");
-//                        };
+                        console.log("turning on click at "+window.performance.now());
                         return timeOut;
                     }
-//                    card_clicked();
+                    disable_click = false;
                 }
 
             }
+
+
+
+//            1. X ****** disable other clicks from happening during game and during setTimeout
+//            2. X ******* how to have cards pause when matched, and then disappear
+//            3. X how to have live display stats in stats container
+//            4. reset button not working
+//            5. x add images to divs
+//            6. x randomize when load
+//            7. edit styling
+//            8. add audio -when everything works
+//            9. card flip - fade effect
+//            10. vid - victory and lose
+//            11. modal - 2 divs, 1 #modal shadow, 1#modal body, modal shadow = position: fixed; full size of viewport;opacity 0.7 bg black; run to see, zindex 1 (so above everything), modal body (same positioning, except needs to be in middle 50% which is top left corner, shift left & up :translate); bg color white, give size(height/width); display none/or visibilty; make function to show it, make X to close (close function)
+
+
+            $(function () {
+                var randomize_cards = $(".game-area").children(); // MAKE THIS AN ARRAY of images? splice
+                while (randomize_cards.length) {
+                    $(".game-area").append(randomize_cards.splice(Math.floor(Math.random() * randomize_cards.length), 1)[0]);
+                }
+            });
+
+            function display_stats(){
+                $(".games-played .value").empty();
+                $(".games-played .value").append(games_played);
+                $(".attempts .value").empty();
+                $(".attempts .value").append(attempts);
+                $(".accuracy .value").empty();
+                $(".accuracy .value").append(accuracy);
+            }
+
+            function reset_stats(){
+                accuracy = 0;
+                matches = 0;
+                attempts = 0;
+                display_stats();
+            }
+
+            $(".reset").on("click", function(){
+                games_played++;
+                reset_stats();
+                display_stats();
+                card_clicked();
+            });
 
 //            PREVIOUS
 //            $(document).ready(function(){
@@ -113,17 +178,20 @@
                 <div class="games-played">
                     <div class="label">Games Played</div>
                     <hr>
-                    <div class="value"></div>
+                    <div class="value">0</div>
+                    <hr>
                 </div>
                 <div class="attempts">
                     <div class="label">Attempts</div>
                     <hr>
-                    <div class="value"></div>
+                    <div class="value">0</div>
+                    <hr>
                 </div>
                 <div class="accuracy">
                     <div class="label">Accuracy</div>
                     <hr>
-                    <div class="value"></div>
+                    <div class="value">0</div>
+                    <hr>
                 </div>
                 <button class="reset">Reset Game</button>
             </div>
@@ -154,90 +222,120 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/dwight.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/jim.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/jim.jpg" alt="">
+                    </div>
                     <div class="back"><img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/andy.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/andy.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/kevin.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/kevin.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/gabe.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/gabe.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/pam.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/pam.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/stanley.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/stanley.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/toby.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="front"></div>
+                    <div class="front">
+                        <img src="images/toby.jpg" alt="">
+                    </div>
                     <div class="back">
                         <img src="images/dunderMifflin.png" alt="dunder mifflin">
                     </div>
