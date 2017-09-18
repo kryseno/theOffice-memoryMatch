@@ -65,7 +65,6 @@
                     second_card_clicked = this;
                     attempts++;
                     console.log('attempt #: ' + attempts);
-                    display_stats();
                     allow_card_click = false;
 
                     if($(first_card_clicked).find('.front img').attr('src') === $(second_card_clicked).find('.front img').attr('src')){
@@ -74,6 +73,7 @@
                         console.log('match_counter: ' + matches);
                         accuracy = Math.floor((matches / attempts) * 100) + '%';
                         console.log('accuracy: ' + accuracy);
+                        display_stats();
 
                         setTimeout(pause_after_matched, 1000);
                         function pause_after_matched(){
@@ -116,27 +116,6 @@
                 }
             }
 
-
-
-//            1. X ****** disable other clicks from happening during game and during setTimeout
-//            2. X ******* how to have cards pause when matched, and then disappear
-//            3. X how to have live display stats in stats container
-//            3.5 FIX ACCURACY STATS
-//            4. X reset button not working
-//            5. X add images to divs
-//            6. X randomize when load
-//            7. X edit styling
-//            7.5. X crop photos to make faces show better
-//            8. add audio -when everything works
-//            9. card flip - fade effect
-//            10. X vid - victory
-//            11. X modal - 2 divs, 1 #modal shadow, 1#modal body, modal shadow = position: fixed;
-            // full size of viewport;opacity 0.7 bg black; run to see, zindex 1 (so above everything),
-            // modal body (same positioning, except needs to be in middle 50% which is top left
-            // corner, shift left & up :translate); bg color white, give size(height/width);
-            // display none/or visibilty; make function to show it, make X to close (close function)
-
-
             function assembleCards(){
                 randomizeImagesArray(imagesArr);
                 for (var i = 0; i < imagesArr.length; i++){
@@ -176,8 +155,11 @@
                 console.log(games_played);
                 $(".card").remove();
                 $(document).ready(assembleCards);
+                $(".card").click(card_clicked);
                 reset_stats();
                 display_stats();
+                var audio = $("#office_theme");
+                $(".stats_container").append(audio);
             }
 
             function reset_stats(){
@@ -196,19 +178,34 @@
 //            }
 
             function show_victory_modal(){
-                $("audio").remove();
+                $("audio").detach();
+                var counter = 0;
+                var backgroundInterval = setInterval(function(){
+                    $(".victory_nailed_it").toggleClass("victory_background_toggle");
+                    counter++;
+                    if (counter >= 100){
+                        clearInterval(backgroundInterval);
+                    }
+                }, 200);
                 var add_iframe = $("<iframe>").attr('src', 'https://www.youtube.com/embed/5P2HNS-wi1Q?autoplay=1');
                 $("#modal_body").append(add_iframe);
                 $(".victory_modal").css('visibility', 'visible');
                 $('.victory_modal').on('shown.bs.modal', function () {
                     $('#everybody_dance')[0].play();
-                })
+                });
                 $('.victory_modal').on('hidden.bs.modal', function () {
                     $('#everybody_dance')[0].pause();
-                })
+                });
                 $(".close").on('click',function() {
                     $(".victory_modal").remove();
-                })
+                    reset_game();
+                    var new_p_stats = $("<p>");
+                    $(".stats_container").append(new_p_stats);
+                    var audio = $("<audio controls autoplay loop>");
+                    var source = $("<source>").attr('src', 'audio/office.mp3', 'type', 'audio/mpeg');
+                    $(audio).append(source);
+                    $(new_p_stats).append(audio);
+                });
             }
 
         </script>
@@ -227,7 +224,6 @@
             <img id="logo" src="images/dunderMifflin.png" alt="Dunder Mifflin Logo">
             <div class="center">
                 <img id="office_sign" src="images/the_office_sign.jpg" alt="">
-                <!--<div id="title"><h1>Memory<br>Match<br>Game</h1></div>-->
                 <nav>
                     <ul>
                         <li><a href="">settings</a></li>
@@ -271,147 +267,3 @@
 
     </body>
 </html>
-
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/michael.jpg" alt="michael">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/michael.jpg" alt="michael">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/dwight.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/dwight.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/jim.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/jim.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back"><img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/andy.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/andy.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/kevin.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/kevin.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/gabe.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/gabe.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/pam.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/pam.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/stanley.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/stanley.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/toby.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="card">-->
-<!--<div class="front">-->
-<!--<img src="images/toby.jpg" alt="">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
-<!--</div>-->
-<!--</div>-->
