@@ -14,8 +14,6 @@
             var games_played = 0;
             var allow_card_click = true;
             var imagesArr = [
-//                'andy', 'dwight', 'gabe', 'jim', 'kevin', 'michael', 'pam', 'stanley', 'toby',
-//                'andy', 'dwight', 'gabe', 'jim', 'kevin', 'michael', 'pam', 'stanley', 'toby'];
                 'images/andy.jpg',
                 'images/dwight.jpg',
                 'images/gabe.jpg',
@@ -34,18 +32,12 @@
                 'images/pam.jpg',
                 'images/stanley.jpg',
                 'images/toby.jpg'
-
             ];
-
-//            FOR RESET I WANT TO:
-//            1. have cards return to game-area
-//            2. back of card showing
-//            3. reshuffle (re-randomize cards)
-//            4. reset attempts & accuracy, games_played++
 
             $(document).ready(initializeApplication);
 
             function initializeApplication(){
+                $(".reset").click(reset_game);
                 assembleCards();
                 $(".card").click(card_clicked);
             }
@@ -130,15 +122,15 @@
 //            2. X ******* how to have cards pause when matched, and then disappear
 //            3. X how to have live display stats in stats container
 //            3.5 FIX ACCURACY STATS
-//            4. reset button not working
+//            4. X reset button not working
 //            5. X add images to divs
 //            6. X randomize when load
 //            7. X edit styling
 //            7.5. X crop photos to make faces show better
 //            8. add audio -when everything works
 //            9. card flip - fade effect
-//            10. vid - victory and lose
-//            11. modal - 2 divs, 1 #modal shadow, 1#modal body, modal shadow = position: fixed;
+//            10. X vid - victory
+//            11. X modal - 2 divs, 1 #modal shadow, 1#modal body, modal shadow = position: fixed;
             // full size of viewport;opacity 0.7 bg black; run to see, zindex 1 (so above everything),
             // modal body (same positioning, except needs to be in middle 50% which is top left
             // corner, shift left & up :translate); bg color white, give size(height/width);
@@ -179,10 +171,11 @@
                 $(".accuracy .value").append(accuracy);
             }
 
-            $(".reset").click(reset_game);
             function reset_game(){
                 games_played++;
                 console.log(games_played);
+                $(".card").remove();
+                $(document).ready(assembleCards);
                 reset_stats();
                 display_stats();
             }
@@ -191,7 +184,6 @@
                 accuracy = 0;
                 matches = 0;
                 attempts = 0;
-                display_stats();
             }
 
 //            var audio = $("#office_theme");

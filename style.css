@@ -157,7 +157,6 @@ a:hover{
     height: 50%;
     width: 50%;
     z-index: 2;
-    /*padding: 0 .5% 0 0;*/
 }
 .victory_nailed_it{
     position: relative;
@@ -186,16 +185,12 @@ a:hover{
     cursor: pointer;
 }
 iframe{
-    /*position: relative;*/
-    /*display: inline-flex;*/
-    /*flex-flow: row wrap;*/
-    /*justify-content: center;*/
     width: 99.4%;
     height: 90%;
 }
 audio{
     width: 15vw;
-    visibility: hidden;
+    /*visibility: hidden;*/
 }
 
 /*About Me, .html*/
