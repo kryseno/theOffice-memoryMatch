@@ -1,5 +1,5 @@
 body, html{
-    margin: 5px;
+    margin: 2px;
     padding: 0;
 }
 body{
@@ -12,7 +12,7 @@ body{
     font-size: 2vmin;
 }
 header{
-    width: 98vw;
+    width: 98.3vw;
     height: 25vh;
     display: flex;
     justify-content: space-around;
@@ -37,7 +37,6 @@ nav{
     margin: 0;
     background: rgba(0, 0, 0, 0.8);
     text-align: center;
-    /*height: 7vh;*/
     width: 100%;
 }
 nav ul{
@@ -64,48 +63,37 @@ a:visited{
 a:hover{
     color: dimgray;
 }
-/*#title{ MAKE IN PHOTOSHOP*/
-    /*position: absolute;*/
-    /*text-align: right;*/
-    /*line-height: 182%;*/
-    /*font-size: 1.3em;*/
-    /*top: 2%;*/
-    /*left: 29%;*/
-/*}*/
 .stats_container{
-    height: 73vh;
-    width: 20vw;
+    height: 67vh;
+    width: 15vw;
     display: inline-block;
-    /*border: 1px solid black;*/
     background: rgba(255, 255, 255, 0.5);
     text-align: center;
     text-transform: uppercase;
     border-radius: 8px;
+    margin-top: .2%;
+    padding-top: 3%;
 }
 .game-area {
     vertical-align: top;
     display: inline-flex;
     flex-flow: row wrap;
-    height: 73vh;
-    width: 77vw;
-    /*border: 1px solid black;*/
+    height: 67vh;
+    width: 67vw;
     background: rgba(255, 255, 255, 0.5);
     align-self: center;
     justify-content: space-evenly;
     border-radius: 8px;
+    padding: 0 8% 3% 8%;
+    margin-top: 0.2%;
 }
-/*
-4. why does page scroll
-5. why are card imgs not fitting properly
-6. back of card lowered
- */
 .card{
-    margin: 1%;
-    height: 35%;
-    width: 14%;
+    height: 34%;
+    width: 13%;
     border: 1px solid black;
     border-radius: 8px;
     position: relative;
+    margin: 0.8% 1.5% 0 1.5%;
 }
 .back{
     position: absolute;
@@ -124,7 +112,6 @@ a:hover{
     width: 100%;
     height: 100%;
 }
-
 .card .front img {
     position: absolute;
     border: 1px solid black;
@@ -132,33 +119,83 @@ a:hover{
     height: 100%;
     width: 100%;
 }
-
 .card .back img{
     position: absolute;
-    top: 30%;
+    top: 25%;
     max-width: 100%;
     max-height: 100%;
 }
-/*.back img{*/
-    /*position: absolute;*/
-    /*height: 35%;*/
-    /*width: 15%;*/
-    /*background-color: black;*/
-    /*border: 1px solid black;*/
-/*}*/
-/*.front img{*/
-    /*position: absolute;*/
-    /*height: 35%;*/
-    /*width: 15%;*/
-    /*background-color: black;*/
-    /*border: 1px solid black;*/
-/*}*/
+.games-played,
+.attempts,
+.accuracy{
+    font-size: 1.8em;
+}
 .label{
-    font-size: 1em;
     font-weight: bold;
 }
 .reset{
-    font-size: 1em;
+    font-size: 2em;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+.victory_modal{
+    visibility: hidden;
+}
+#modal_shadow{
+    position: fixed;
+    height: 100%;
+    width: 100% ;
+    opacity: 0.7;
+    background-color: black;
+    z-index: 1;
+}
+#modal_body{
+    position: fixed;
+    top: 24%;
+    left: 27%;
+    background-color: white;
+    height: 50%;
+    width: 50%;
+    z-index: 2;
+    /*padding: 0 .5% 0 0;*/
+}
+.victory_nailed_it{
+    position: relative;
+    display: inline-flex;
+    flex-flow: row wrap;
+    width: 84%;
+    padding: 0 5%;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    background-color: blue;
+}
+.close {
+    display: inline;
+    width: 5%;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+iframe{
+    /*position: relative;*/
+    /*display: inline-flex;*/
+    /*flex-flow: row wrap;*/
+    /*justify-content: center;*/
+    width: 99.4%;
+    height: 90%;
+}
+audio{
+    width: 15vw;
+    visibility: hidden;
 }
 
 /*About Me, .html*/
@@ -169,136 +206,3 @@ a:hover{
 #skills-needed{
     display: inline-block;
 }
-
-/*PREVIOUS STYLING*/
-/*body{*/
-/*height: 100%;*/
-/*width: 100%;*/
-/*padding-top: 0;*/
-/*margin-top: 0;*/
-/*margin-left: auto;*/
-/*margin-right: auto;*/
-/*font-family: Montserrat, sans-serif;*/
-/*font-size: 2vmin;*/
-/*box-sizing: border-box;*/
-/*background-image: url('images/dunderMifflinPainting.jpg');*/
-/*background-attachment: fixed;*/
-/*background-repeat: no-repeat;*/
-/*background-position: 20%;*/
-/*background-size: cover;*/
-/*position: relative;*/
-/*}*/
-/*header{*/
-/*position: absolute;*/
-/*width: 85%;*/
-/*height: 20%;*/
-/*left: 8%;*/
-/*display: block;*/
-/*color: white;*/
-/*border: 1px solid black;*/
-/*background: rgba(255, 255, 255, 0.5);*/
-/*background-image: url('images/the_office_sign.jpg');*/
-/*background-position: center center;*/
-/*background-repeat: no-repeat;*/
-/*background-size: contain;*/
-/*}*/
-/*.stats_container {*/
-/*position: absolute;*/
-/*margin-top: 3px;*/
-/*padding-top: 5px;*/
-/*border: 1px solid black;*/
-/*top: 25.3%;*/
-/*height: 74%;*/
-/*background: rgba(255, 255, 255, 0.5);*/
-/*}*/
-/*.stats_container{*/
-/*width: 20%;*/
-/*left: 8%;*/
-/*text-align: center;*/
-/*text-transform: uppercase;*/
-/*}*/
-/*.game-area{*/
-/*position: relative;*/
-/*display: flex;*/
-/*flex-flow: row wrap;*/
-/*width: 62%;*/
-/*left: 31%;*/
-/*!*right: 7%;*!*/
-/*}*/
-
-/*.game-area {*/
-/*display: flex;*/
-/*width: 62%;*/
-
-/*}*/
-/*.card{*/
-/*position: relative;*/
-/*display: inline-block;*/
-/*border: 1px solid black;*/
-/*border-radius: 8px;*/
-/*width: 110px;*/
-/*height: 80px;*/
-/*margin: 15px;*/
-/*padding-top: 58px;*/
-/*left: 2.5%;*/
-/*top: 0.5%;*/
-/*background-color: black;*/
-/*}*/
-/*.front{*/
-/*position: absolute;*/
-/*width: 100%;*/
-/*height: 100%;*/
-/*!*display: inline-block;*!*/
-/*!*border: 1px solid black;*!*/
-/*!*border-radius: 8px;*!*/
-/*!*left: 0;*!*/
-/*!*top: 0;*!*/
-/*!*background-image: url('images/michael.jpg');*!*/
-/*!*background-position: center center;*!*/
-/*!*background-repeat: no-repeat;*!*/
-/*!*background-size: contain;*!*/
-/*}*/
-/*.back{*/
-/*position: absolute;*/
-/*width: 100%;*/
-/*height: 100%;*/
-/*!*border: 1px solid black;*!*/
-/*!*border-radius: 8px;*!*/
-/*!*left: 0;*!*/
-/*!*top: 0;*!*/
-/*!*display: inline-block;*!*/
-/*!*background-image: url('images/dunderMifflin.png');*!*/
-/*!*background-color: black;*!*/
-/*!*background-position: center center;*!*/
-/*!*background-repeat: no-repeat;*!*/
-/*!*background-size: contain;*!*/
-/*}*/
-/*PREVIOUS*/
-/*.card{*/
-    /*position: relative;*/
-    /*border: 1px solid black;*/
-    /*border-radius: 8px;*/
-    /*display: inline-block;*/
-    /*width: 110px;*/
-    /*height: 80px;*/
-    /*margin: 15px;*/
-    /*padding-top: 58px;*/
-    /*left: 2.5%;*/
-    /*top: 0.5%;*/
-/*}*/
-/*.back,*/
-/*.front{*/
-    /*background-position: center center;*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: contain;*/
-/*}*/
-/*.back{*/
-    /*background-image: url('images/the_office_sign.jpg');*/
-    /*background-color: black;*/
-/*}*/
-/*.front-michael{*/
-    /*background-image: url('images/michael.jpg');*/
-/*}*/
-/*.front-dwight{*/
-    /*background-image: url('images/dwight.jpg');*/
-/*}*/
