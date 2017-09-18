@@ -42,8 +42,6 @@
                 $(".card").click(card_clicked);
             }
             function card_clicked(){
-//                console.log('handle click called');
-
                 if(!allow_card_click){
                     return;
                 }
@@ -54,25 +52,19 @@
                 }
 
                 $(this).addClass('reveal');
-//                console.log('card clicked');
 
                 if(first_card_clicked === null){
-//                    console.log('first card was clicked');
                     first_card_clicked = this;
                     return;
                 } else {
-//                    console.log('second card was clicked');
                     second_card_clicked = this;
                     attempts++;
-                    console.log('attempt #: ' + attempts);
+                    display_stats();
                     allow_card_click = false;
 
                     if($(first_card_clicked).find('.front img').attr('src') === $(second_card_clicked).find('.front img').attr('src')){
-                        console.log('the cards matched!');
                         matches++;
-                        console.log('match_counter: ' + matches);
                         accuracy = Math.floor((matches / attempts) * 100) + '%';
-                        console.log('accuracy: ' + accuracy);
                         display_stats();
 
                         setTimeout(pause_after_matched, 1000);
@@ -85,32 +77,20 @@
                         }
 
                         if(matches === total_possible_matches){
-                            console.log('You won!');
                             show_victory_modal();
                         } else {
                             return;
                         }
 
                     } else {
-                        console.log("turning off click at "+window.performance.now());
                         allow_card_click = false;
-                        console.log('not a match');
                         var timeOut = setTimeout(function () {
-                            console.log('starting to flip back cards '+window.performance.now())
                             $(first_card_clicked).removeClass('reveal');
-//                            console.log('back of 1st card now shown');
                             first_card_clicked = null;
-//                            console.log('first_card_clicked is null');
                             $(second_card_clicked).removeClass('reveal');
-//                            console.log('back of 2nd card now shown');
                             second_card_clicked = null;
-//                            console.log('second_card_clicked is null');
                             allow_card_click = true;
-                            console.log("done flipping back cards" +window.performance.now())
                         }, 2000);
-                        console.log('2 seconds passed');
-
-                        console.log("turning on click at "+window.performance.now());
                         return timeOut;
                     }
                 }
@@ -122,11 +102,11 @@
                     var make_card = $("<div>").addClass('card');
                         var make_front_card = $("<div>").addClass('front');
                         var make_front_img = $("<img>").attr('src', imagesArr[i]);
-                    $(make_front_card).append(make_front_img);
+                            $(make_front_card).append(make_front_img);
                         var make_back_card = $("<div>").addClass('back');
                         var make_back_img = $("<img>").attr('src', 'images/dunderMifflin.png', 'alt', 'dunder mifflin');
-                    $(make_back_card).append(make_back_img);
-                    $(make_card).append(make_front_card, make_back_card);
+                            $(make_back_card).append(make_back_img);
+                        $(make_card).append(make_front_card, make_back_card);
                     $(".game-area").append(make_card);
                 }
             }
@@ -152,7 +132,6 @@
 
             function reset_game(){
                 games_played++;
-                console.log(games_played);
                 $(".card").remove();
                 $(document).ready(assembleCards);
                 $(".card").click(card_clicked);
@@ -167,15 +146,6 @@
                 matches = 0;
                 attempts = 0;
             }
-
-//            var audio = $("#office_theme");
-//            function playAudio() {
-//                audio.play();
-//            }
-//
-//            function pauseAudio() {
-//                audio.pause();
-//            }
 
             function show_victory_modal(){
                 $("audio").detach();

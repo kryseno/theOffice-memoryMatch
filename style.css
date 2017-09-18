@@ -155,7 +155,8 @@ a:hover{
     width: 50%;
     z-index: 2;
 }
-.victory_nailed_it{
+.victory_nailed_it,
+.victory_background_toggle{
     position: relative;
     display: inline-flex;
     flex-flow: row wrap;
@@ -168,15 +169,6 @@ a:hover{
     background-color: yellow;
 }
 .victory_background_toggle{
-    position: relative;
-    display: inline-flex;
-    flex-flow: row wrap;
-    width: 84%;
-    padding: 0 5%;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 10px;
     background-color: green;
 }
 .close {
@@ -202,7 +194,7 @@ audio{
     visibility: hidden;
 }
 
-/*About Me, .html*/
+/* about.html*/
 .about_me_nav_container > a{
     color: black;
     font-size: 1rem;
