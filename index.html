@@ -7,17 +7,46 @@
         <script>
             var first_card_clicked = null;
             var second_card_clicked = null;
-            var disable_click = false;
             var total_possible_matches = 9;
             var matches = 0;
             var attempts = 0;
             var accuracy = 0;
             var games_played = 0;
             var allow_card_click = true;
+            var imagesArr = [
+//                'andy', 'dwight', 'gabe', 'jim', 'kevin', 'michael', 'pam', 'stanley', 'toby',
+//                'andy', 'dwight', 'gabe', 'jim', 'kevin', 'michael', 'pam', 'stanley', 'toby'];
+                'images/andy.jpg',
+                'images/dwight.jpg',
+                'images/gabe.jpg',
+                'images/jim.jpg',
+                'images/kevin.jpg',
+                'images/michael.jpg',
+                'images/pam.jpg',
+                'images/stanley.jpg',
+                'images/toby.jpg',
+                'images/andy.jpg',
+                'images/dwight.jpg',
+                'images/gabe.jpg',
+                'images/jim.jpg',
+                'images/kevin.jpg',
+                'images/michael.jpg',
+                'images/pam.jpg',
+                'images/stanley.jpg',
+                'images/toby.jpg'
+
+            ];
+
+//            FOR RESET I WANT TO:
+//            1. have cards return to game-area
+//            2. back of card showing
+//            3. reshuffle (re-randomize cards)
+//            4. reset attempts & accuracy, games_played++
 
             $(document).ready(initializeApplication);
 
             function initializeApplication(){
+                assembleCards();
                 $(".card").click(card_clicked);
             }
             function card_clicked(){
@@ -43,15 +72,15 @@
                     second_card_clicked = this;
                     attempts++;
                     console.log('attempt #: ' + attempts);
-
                     display_stats();
-                    accuracy = Math.floor((matches / attempts) * 100) + '%';
-                    console.log('accuracy: ' + accuracy);
+                    allow_card_click = false;
 
                     if($(first_card_clicked).find('.front img').attr('src') === $(second_card_clicked).find('.front img').attr('src')){
                         console.log('the cards matched!');
                         matches++;
                         console.log('match_counter: ' + matches);
+                        accuracy = Math.floor((matches / attempts) * 100) + '%';
+                        console.log('accuracy: ' + accuracy);
 
                         setTimeout(pause_after_matched, 1000);
                         function pause_after_matched(){
@@ -59,6 +88,7 @@
                             $(second_card_clicked).css('visibility', 'hidden');
                             first_card_clicked = null;
                             second_card_clicked = null;
+                            allow_card_click = true;
                         }
 
                         if(matches === total_possible_matches){
@@ -89,7 +119,6 @@
                         console.log("turning on click at "+window.performance.now());
                         return timeOut;
                     }
-                    disable_click = false;
                 }
 
             }
@@ -100,21 +129,39 @@
 //            2. X ******* how to have cards pause when matched, and then disappear
 //            3. X how to have live display stats in stats container
 //            4. reset button not working
-//            5. x add images to divs
-//            6. x randomize when load
+//            5. X add images to divs
+//            6. X randomize when load
 //            7. edit styling
+//            7.5. crop photos to make faces show better
 //            8. add audio -when everything works
 //            9. card flip - fade effect
 //            10. vid - victory and lose
 //            11. modal - 2 divs, 1 #modal shadow, 1#modal body, modal shadow = position: fixed; full size of viewport;opacity 0.7 bg black; run to see, zindex 1 (so above everything), modal body (same positioning, except needs to be in middle 50% which is top left corner, shift left & up :translate); bg color white, give size(height/width); display none/or visibilty; make function to show it, make X to close (close function)
 
-
-            $(function () {
-                var randomize_cards = $(".game-area").children(); // MAKE THIS AN ARRAY of images? splice
-                while (randomize_cards.length) {
-                    $(".game-area").append(randomize_cards.splice(Math.floor(Math.random() * randomize_cards.length), 1)[0]);
+            function assembleCards(){
+                randomizeImagesArray(imagesArr);
+                for (var i = 0; i < imagesArr.length; i++){
+                    var make_card = $("<div>").addClass('card');
+                        var make_front_card = $("<div>").addClass('front');
+                        var make_front_img = $("<img>").attr('src', imagesArr[i]);
+                    $(make_front_card).append(make_front_img);
+                        var make_back_card = $("<div>").addClass('back');
+                        var make_back_img = $("<img>").attr('src', 'images/dunderMifflin.png', 'alt', 'dunder mifflin');
+                    $(make_back_card).append(make_back_img);
+                    $(make_card).append(make_front_card, make_back_card);
+                    $(".game-area").append(make_card);
                 }
-            });
+            }
+
+            function randomizeImagesArray(array){
+                for (var i = array.length - 1; i > 0; i--){
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var hold = array[i];
+                    array[i] = array[j];
+                    array[j] = hold;
+                }
+                return array;
+            }
 
             function display_stats(){
                 $(".games-played .value").empty();
@@ -139,21 +186,6 @@
                 card_clicked();
             });
 
-//            PREVIOUS
-//            $(document).ready(function(){
-////                var pictures = ['images/michael.jpg',
-////                'images/dwight.jpg'];
-//                makeCardDivs();
-//                function makeCardDivs() {
-//                    var game_area = $(".game-area");
-//                    for (var i = 0; i < 18; i++) {
-//                        var new_card = $("<div>").addClass("card back").click(function(){
-//                            $(this).toggleClass("front-michael");
-//                        });
-//                        $(game_area).append(new_card);
-//                    };
-//                };
-//            });
         </script>
     </head>
     <body>
@@ -197,149 +229,149 @@
             </div>
 
             <div class="game-area">
-                <div class="card">
-                    <div class="front">
-                        <img src="images/michael.jpg" alt="michael">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/michael.jpg" alt="michael">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/dwight.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/dwight.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/jim.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/jim.jpg" alt="">
-                    </div>
-                    <div class="back"><img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/andy.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/andy.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/kevin.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/kevin.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/gabe.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/gabe.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/pam.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/pam.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/stanley.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/stanley.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/toby.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="images/toby.jpg" alt="">
-                    </div>
-                    <div class="back">
-                        <img src="images/dunderMifflin.png" alt="dunder mifflin">
-                    </div>
-                </div>
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/michael.jpg" alt="michael">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/michael.jpg" alt="michael">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/dwight.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/dwight.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/jim.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/jim.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back"><img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/andy.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/andy.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/kevin.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/kevin.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/gabe.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/gabe.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/pam.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/pam.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/stanley.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/stanley.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/toby.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="card">-->
+                    <!--<div class="front">-->
+                        <!--<img src="images/toby.jpg" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="back">-->
+                        <!--<img src="images/dunderMifflin.png" alt="dunder mifflin">-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
 
     </body>
