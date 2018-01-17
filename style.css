@@ -191,7 +191,7 @@ iframe{
 }
 audio{
     width: 15vw;
-    visibility: hidden;
+    visibility: visible;
 }
 
 /* about.html*/
