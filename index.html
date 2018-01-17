@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Memory Match Game</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+
+        <div class="victory_modal">
+            <div id="modal_body">
+                <span class="victory_nailed_it">NAILED IT</span>
+                <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div id="modal_shadow"></div>
+        </div>
+
+        <header>
+            <img id="logo" src="images/dunderMifflin.png" alt="Dunder Mifflin Logo">
+            <div class="center">
+                <img id="office_sign" src="images/the_office_sign.jpg" alt="">
+                <nav>
+                    <ul>
+                        <li><a href="">settings</a></li>
+                        <li><a href="about.html">about</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <img id="peoplePersonsImg" src="images/peoplePersons.jpg" alt="The People Person's Paper People">
+
+        </header>
+
+        <div class="stats_container">
+            <div class="games-played">
+                <div class="label">Games Played</div>
+                <hr>
+                <div class="value">0</div>
+                <hr>
+            </div>
+            <div class="attempts">
+                <div class="label">Attempts</div>
+                <hr>
+                <div class="value">0</div>
+                <hr>
+            </div>
+            <div class="accuracy">
+                <div class="label">Accuracy</div>
+                <hr>
+                <div class="value">0</div>
+                <hr>
+            </div>
+            <button class="reset">Reset Game</button>
+            <p>
+                <audio controls autoplay loop>
+                    <source src="audio/office.mp3" type="audio/mpeg">
+                </audio>
+            </p>
+
+        </div>
+
+        <div class="game-area"></div>
+
+    </body>
+</html>
