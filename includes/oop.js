@@ -1,5 +1,5 @@
 $(document).ready(initializeApp);
-let game = null;
+var game = null;
 
 function initializeApp() {
     game = new MemoryMatchGame();
