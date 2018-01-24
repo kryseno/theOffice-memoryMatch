@@ -1,11 +1,3 @@
-$(document).ready(initializeApp);
-let game = null;
-
-function initializeApp() {
-    game = new MemoryMatchGame();
-    game.initializeGame();
-}
-
 function MemoryMatchGame() {
     this.cards = [];
     this.imageList = [
@@ -28,8 +20,8 @@ function MemoryMatchGame() {
         let cardList = [];
         for(var i=0; i<images.length; i++){
             console.log('making a new card commences');
-            const newCard = new Card(images[i]);
-            cardList.push(newCard);
+            // const newCard = new Card(images[i]);
+            // cardList.push(newCard);
         }
         return cardList;
     }
