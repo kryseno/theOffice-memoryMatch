@@ -24,8 +24,14 @@ function MemoryMatchGame() {
         console.log('take imageList & added itself onto it (doubling it)');
         this.createCards(images);
     }
-    this.createCards = function() {
-        
+    this.createCards = function(images) {
+        let cardList = [];
+        for(var i=0; i<images.length; i++){
+            console.log('making a new card commences');
+            const newCard = new Card(images[i]);
+            cardList.push(newCard);
+        }
+        return cardList;
     }
     this.handleCardClick = function() {
         
