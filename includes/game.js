@@ -1,4 +1,4 @@
-function MemoryMatchGame() {
+function MemoryMatchGame(){
     this.cards = [];
     this.imageList = [
         'images/andy.jpg',
@@ -11,21 +11,23 @@ function MemoryMatchGame() {
         'images/stanley.jpg',
         'images/toby.jpg'
     ];
-    this.initializeGame = function() {
-        const images = this.imageList.concat(this.imageList);
+    this.initializeGame = function(){
+        var images = this.imageList.concat(this.imageList);
         console.log('take imageList & added itself onto it (doubling it)');
-        this.createCards(images);
+        this.cards = this.createCards(images);
     }
-    this.createCards = function(images) {
-        let cardList = [];
+    this.createCards = function(images){
+        var cardList = [];
         for(var i=0; i<images.length; i++){
             console.log('making a new card commences');
-            // const newCard = new Card(images[i]);
-            // cardList.push(newCard);
+            var newCard = new Card(images[i], this);
+            var cardDomElement = newCard.render();
+            $(".game-area").append(cardDomElement);
+            cardList.push(newCard);
         }
         return cardList;
     }
-    this.handleCardClick = function() {
+    this.handleCardClick = function(){
         
     }
 }
