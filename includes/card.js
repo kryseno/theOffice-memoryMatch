@@ -13,6 +13,7 @@ function Card(frontImg, parentObj) {
     this.frontImg = frontImg;
     this.parentObj = parentObj;
     this.revealed = false;
+    this.renderedElement = null;
 
     this.render = function(){
         var card = $("<div>", {
@@ -28,6 +29,7 @@ function Card(frontImg, parentObj) {
             class: 'back'
         });
         card.append(front, back);
+        this.renderedElement = card;
         return card;
     }
 }
