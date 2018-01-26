@@ -29,7 +29,9 @@ function Card(frontImg, backImg, parentObj) {
         return card;
     }
     this.handleClick = function(){
-        console.log('handling card click');
-        console.log('this is', this);
+        this.parentObj.handleCardClick(this);
+    }
+    this.revealSelf = function(){
+        this.renderedElement.find('.back').hide();
     }
 }

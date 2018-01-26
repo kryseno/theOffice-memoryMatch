@@ -12,6 +12,8 @@ function MemoryMatchGame(){
         'images/stanley.jpg',
         'images/toby.jpg'
     ];
+    this.clickedCardsList = [];
+
     this.initializeGame = function(){
         var images = this.imageList.concat(this.imageList);
         console.log('take imageList & added itself onto it (doubling it)');
@@ -28,7 +30,12 @@ function MemoryMatchGame(){
         }
         return cardList;
     }
-    this.handleCardClick = function(){
-        
+    this.handleCardClick = function(cardObjClicked){
+        console.log('child was clicked',cardObjClicked);
+
+        if(this.clickedCardsList.length < 2){
+            this.clickedCardsList.push(cardObjClicked);
+            cardObjClicked.revealSelf();
+        }
     }
 }
