@@ -28,6 +28,7 @@ function Card(frontImg, parentObj) {
         var back = $("<div>", {
             class: 'back'
         });
+        front.append(imgSrc);
         card.append(front, back);
         this.renderedElement = card;
         return card;
