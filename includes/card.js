@@ -9,6 +9,7 @@ function Card(frontImg, backImg, parentObj) {
         var card = $("<div>", {
             class: 'card'
         });
+        card.click(this.handleClick.bind(this));
         var front = $("<div>", {
             class: 'front'
         });
@@ -26,5 +27,9 @@ function Card(frontImg, backImg, parentObj) {
         card.append(front, back);
         this.renderedElement = card;
         return card;
+    }
+    this.handleClick = function(){
+        console.log('handling card click');
+        console.log('this is', this);
     }
 }
