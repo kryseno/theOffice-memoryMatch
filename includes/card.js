@@ -28,10 +28,20 @@ function Card(frontImg, backImg, parentObj) {
         this.renderedElement = card;
         return card;
     }
+
     this.handleClick = function(){
         this.parentObj.handleCardClick(this);
     }
+
     this.revealSelf = function(){
         this.renderedElement.find('.back').hide();
+    }
+
+    this.hideSelf = function(){
+        this.renderedElement.find('.back').show();
+    }
+
+    this.getID = function(){
+        return this.frontImg;
     }
 }
