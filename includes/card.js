@@ -1,16 +1,6 @@
-/*
-<div class="card">
-    <div class="front">
-        <img src="images/michael.jpg">
-    </div>
-    <div class="back">
-        <img src="images/dunderMifflin.png">
-    </div>
-</div>
-*/
-
-function Card(frontImg, parentObj) {
+function Card(frontImg, backImg, parentObj) {
     this.frontImg = frontImg;
+    this.backImg = backImg;
     this.parentObj = parentObj;
     this.revealed = false;
     this.renderedElement = null;
@@ -22,12 +12,17 @@ function Card(frontImg, parentObj) {
         var front = $("<div>", {
             class: 'front'
         });
-        var imgSrc = $("<img>", {
+        var imgSrcFront = $("<img>", {
             src: this.frontImg
         });
         var back = $("<div>", {
             class: 'back'
         });
+        var imgSrcBack = $("<img>", {
+            src: this.backImg
+        });
+        front.append(imgSrcFront);
+        back.append(imgSrcBack)
         card.append(front, back);
         this.renderedElement = card;
         return card;

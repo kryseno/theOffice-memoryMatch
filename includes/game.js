@@ -1,5 +1,6 @@
 function MemoryMatchGame(){
     this.cards = [];
+    this.backgroundImg = 'images/dunderMifflin.png';
     this.imageList = [
         'images/andy.jpg',
         'images/dwight.jpg',
@@ -20,7 +21,7 @@ function MemoryMatchGame(){
         var cardList = [];
         for(var i=0; i<images.length; i++){
             console.log('making a new card commences');
-            var newCard = new Card(images[i], this);
+            var newCard = new Card(images[i], this.backgroundImg, this);
             var cardDomElement = newCard.render();
             $(".game-area").append(cardDomElement);
             cardList.push(newCard);

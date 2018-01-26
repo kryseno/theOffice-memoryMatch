@@ -99,7 +99,7 @@ a:hover{
     background-color: black;
     border: 1px solid black;
     border-radius: 8px;
-    /*opacity: .4;*/
+    opacity: .4;
 }
 .reveal .back{
     display: none;
@@ -122,6 +122,13 @@ a:hover{
     max-width: 100%;
     max-height: 100%;
 }
+/* .card .back{
+    background: url('../images/dunderMifflin.png');
+    position: absolute;
+    top: 25%;
+    max-width: 100%;
+    max-height: 100%;
+} */
 .games-played,
 .attempts,
 .accuracy{
