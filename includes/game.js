@@ -1,5 +1,6 @@
 function MemoryMatchGame(){
     this.cards = [];
+    this.matchCount = 0;
     this.revertTime = 3000;
     this.backgroundImg = 'images/dunderMifflin.png';
     this.imageList = [
@@ -43,6 +44,11 @@ function MemoryMatchGame(){
             if(this.clickedCardsList.length === 2){
                 if(this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()){
                     console.log('issa match!!');
+                    this.clearClickedCardsList();
+                    this.matchCount += 1;
+                    if(this.matchCount === this.cards.length/2){
+                        this.playerWins();
+                    }
                 } else {
                     setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                 }
@@ -50,10 +56,18 @@ function MemoryMatchGame(){
         }
     }
 
+    this.playerWins = function(){
+        console.log('player wins!');
+    }
+
     this.revertClickedCards = function(){
         for(var i=0; i<this.clickedCardsList.length; i++){
             this.clickedCardsList[i].hideSelf();
         }
+        this.clearClickedCardsList();
+    }
+
+    this.clearClickedCardsList = function(){
         this.clickedCardsList = [];
     }
 }
