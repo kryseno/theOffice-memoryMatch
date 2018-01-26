@@ -1,14 +1,3 @@
-/*
-<div class="card">
-    <div class="front">
-        <img src="images/michael.jpg">
-    </div>
-    <div class="back">
-        <img src="images/dunderMifflin.png">
-    </div>
-</div>
-*/
-
 function Card(frontImg, parentObj) {
     this.frontImg = frontImg;
     this.parentObj = parentObj;
