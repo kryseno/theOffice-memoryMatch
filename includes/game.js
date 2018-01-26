@@ -1,7 +1,7 @@
 function MemoryMatchGame(){
     this.cards = [];
     this.matchCount = 0;
-    this.revertTime = 3000;
+    this.revertTime = 2000;
     this.backgroundImg = 'images/dunderMifflin.png';
     this.imageList = [
         'images/andy.jpg',
