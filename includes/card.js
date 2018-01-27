@@ -2,7 +2,6 @@ function Card(frontImg, backImg, parentObj) {
     this.frontImg = frontImg;
     this.backImg = backImg;
     this.parentObj = parentObj;
-    this.revealed = false;
     this.renderedElement = null;
 
     this.render = function(){
@@ -10,6 +9,7 @@ function Card(frontImg, backImg, parentObj) {
             class: 'card'
         });
         card.click(this.handleClick.bind(this));
+        
         var front = $("<div>", {
             class: 'front'
         });
@@ -39,6 +39,10 @@ function Card(frontImg, backImg, parentObj) {
 
     this.hideSelf = function(){
         this.renderedElement.find('.back').show();
+    }
+
+    this.cardMatch = function(){
+        this.renderedElement.css("visibility", "hidden");
     }
 
     this.getID = function(){
