@@ -1,5 +1,5 @@
 function MemoryMatchGame(){
-    this.accuracy = null;
+    this.accuracy = 0;
     this.attempts = 0;
     this.backgroundImg = 'images/dunderMifflin.png';
     this.cards = [];
@@ -82,6 +82,9 @@ function MemoryMatchGame(){
 
     this.updateAttemptsAccuracy = function(){
         this.attempts += 1;
-        this.accuracy = (this.matchCount / this.attempts) * 100;
+        this.accuracy = Math.round((this.matchCount / this.attempts) * 100);
+
+        $(".attempts .value").text(this.attempts);
+        $(".accuracy .value").text(this.accuracy);
     }
 }
