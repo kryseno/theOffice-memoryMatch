@@ -22,6 +22,7 @@ function MemoryMatchGame(){
     this.initializeGame = function(){
         var images = this.imageList.concat(this.imageList);
         this.cards = this.createCards(images);
+        $(".reset").click(this.resetGame.bind(this));
     }
 
     this.createCards = function(images){
@@ -43,7 +44,7 @@ function MemoryMatchGame(){
             if(this.clickedCardsList.length === 2){
                 if(this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()){
                     console.log('issa match!!');
-                    this.matchCount += 1;
+                    this.matchCount++;
                     this.updateAttemptsAccuracy();
                     setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if(this.matchCount === this.cards.length/2){
@@ -81,10 +82,30 @@ function MemoryMatchGame(){
     }
 
     this.updateAttemptsAccuracy = function(){
-        this.attempts += 1;
+        this.attempts++;
         this.accuracy = Math.round((this.matchCount / this.attempts) * 100);
 
         $(".attempts .value").text(this.attempts);
         $(".accuracy .value").text(this.accuracy);
+    }
+
+    this.clearGameArea = function(){
+        $(".game-area").empty();
+    }
+
+    this.resetStats = function(){
+        console.log('reset stats called');
+        this.gamesPlayed++;
+        this.attempts = 0;
+        this.accuracy = 0;
+        $(".games-played .value").text(this.gamesPlayed);
+        $(".attempts .value").text(this.attempts);
+        $(".accuracy .value").text(this.accuracy);
+    }
+
+    this.resetGame = function(){
+        this.resetStats();
+        this.clearGameArea();
+        this.initializeGame();
     }
 }
