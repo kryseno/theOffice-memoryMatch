@@ -9,6 +9,7 @@ function Card(frontImg, backImg, parentObj) {
             class: 'card'
         });
         card.click(this.handleClick.bind(this));
+        
         var front = $("<div>", {
             class: 'front'
         });
