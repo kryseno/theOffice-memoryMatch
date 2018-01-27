@@ -2,7 +2,6 @@ function Card(frontImg, backImg, parentObj) {
     this.frontImg = frontImg;
     this.backImg = backImg;
     this.parentObj = parentObj;
-    this.revealed = false;
     this.renderedElement = null;
 
     this.render = function(){

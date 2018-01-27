@@ -1,8 +1,7 @@
 function MemoryMatchGame(){
-    this.cards = [];
-    this.matchCount = 0;
-    this.revertTime = 2000;
     this.backgroundImg = 'images/dunderMifflin.png';
+    this.cards = [];
+    this.clickedCardsList = [];
     this.imageList = [
         'images/andy.jpg',
         'images/dwight.jpg',
@@ -14,7 +13,8 @@ function MemoryMatchGame(){
         'images/stanley.jpg',
         'images/toby.jpg'
     ];
-    this.clickedCardsList = [];
+    this.matchCount = 0;
+    this.revertTime = 2000;
 
     this.initializeGame = function(){
         var images = this.imageList.concat(this.imageList);
