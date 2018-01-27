@@ -18,14 +18,12 @@ function MemoryMatchGame(){
 
     this.initializeGame = function(){
         var images = this.imageList.concat(this.imageList);
-        console.log('take imageList & added itself onto it (doubling it)');
         this.cards = this.createCards(images);
     }
 
     this.createCards = function(images){
         var cardList = [];
         for(var i=0; i<images.length; i++){
-            console.log('making a new card commences');
             var newCard = new Card(images[i], this.backgroundImg, this);
             var cardDomElement = newCard.render();
             $(".game-area").append(cardDomElement);
@@ -35,8 +33,6 @@ function MemoryMatchGame(){
     }
 
     this.handleCardClick = function(cardObjClicked){
-        console.log('child was clicked',cardObjClicked);
-
         if(this.clickedCardsList.length < 2){
             this.clickedCardsList.push(cardObjClicked);
             cardObjClicked.revealSelf();
