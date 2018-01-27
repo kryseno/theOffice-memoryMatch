@@ -44,16 +44,14 @@ function MemoryMatchGame(){
                 if(this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()){
                     console.log('issa match!!');
                     this.matchCount += 1;
-                    this.attempts += 1;
-                    this.accuracy = (this.matchCount / this.attempts) * 100;
+                    this.updateAttemptsAccuracy();
                     setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if(this.matchCount === this.cards.length/2){
                         this.playerWins();
                     }
                 } else {
                     console.log('issa not a match!!');
-                    this.attempts += 1;
-                    this.accuracy = (this.matchCount / this.attempts) * 100;
+                    this.updateAttemptsAccuracy();
                     setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                 }
             }
@@ -82,7 +80,8 @@ function MemoryMatchGame(){
         this.clearClickedCardsList();
     }
 
-    this.updateAttempts = function(){
-        
+    this.updateAttemptsAccuracy = function(){
+        this.attempts += 1;
+        this.accuracy = (this.matchCount / this.attempts) * 100;
     }
 }
