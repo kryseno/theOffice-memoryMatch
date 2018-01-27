@@ -40,8 +40,9 @@ function MemoryMatchGame(){
             if(this.clickedCardsList.length === 2){
                 if(this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()){
                     console.log('issa match!!');
-                    this.clearClickedCardsList();
+                    // this.clearClickedCardsList();
                     this.matchCount += 1;
+                    setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if(this.matchCount === this.cards.length/2){
                         this.playerWins();
                     }
@@ -65,5 +66,12 @@ function MemoryMatchGame(){
 
     this.clearClickedCardsList = function(){
         this.clickedCardsList = [];
+    }
+
+    this.hideCardMatch = function(){
+        for(var i=0; i<this.clickedCardsList.length; i++){
+            this.clickedCardsList[i].cardMatch();
+        }
+        this.clearClickedCardsList();
     }
 }

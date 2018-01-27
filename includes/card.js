@@ -40,6 +40,10 @@ function Card(frontImg, backImg, parentObj) {
         this.renderedElement.find('.back').show();
     }
 
+    this.cardMatch = function(){
+        this.renderedElement.css("visibility", "hidden");
+    }
+
     this.getID = function(){
         return this.frontImg;
     }
