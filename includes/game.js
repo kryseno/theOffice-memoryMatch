@@ -1,5 +1,5 @@
 function MemoryMatchGame(){
-    this.accuracy = this.matchCount / this.attempts;
+    this.accuracy = null;
     this.attempts = 0;
     this.backgroundImg = 'images/dunderMifflin.png';
     this.cards = [];
@@ -53,6 +53,8 @@ function MemoryMatchGame(){
                     setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                 }
             }
+            this.attempts += 1/2;
+            this.accuracy = (this.matchCount / this.attempts) * 100;
         }
     }
 
@@ -76,5 +78,9 @@ function MemoryMatchGame(){
             this.clickedCardsList[i].cardMatch();
         }
         this.clearClickedCardsList();
+    }
+
+    this.updateAttempts = function(){
+        
     }
 }
