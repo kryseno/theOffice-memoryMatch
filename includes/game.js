@@ -20,9 +20,13 @@ function MemoryMatchGame(){
     this.revertTime = 2000;
 
     this.initializeGame = function(){
+        this.setupCardImgs();
+        $(".reset").click(this.resetGame.bind(this));
+    }
+
+    this.setupCardImgs = function(){
         var images = this.imageList.concat(this.imageList);
         this.cards = this.createCards(images);
-        $(".reset").click(this.resetGame.bind(this));
     }
 
     this.createCards = function(images){
@@ -98,6 +102,7 @@ function MemoryMatchGame(){
         this.gamesPlayed++;
         this.attempts = 0;
         this.accuracy = 0;
+        this.matchCount = 0;
         $(".games-played .value").text(this.gamesPlayed);
         $(".attempts .value").text(this.attempts);
         $(".accuracy .value").text(this.accuracy);
@@ -106,6 +111,6 @@ function MemoryMatchGame(){
     this.resetGame = function(){
         this.resetStats();
         this.clearGameArea();
-        this.initializeGame();
+        this.setupCardImgs();
     }
 }
