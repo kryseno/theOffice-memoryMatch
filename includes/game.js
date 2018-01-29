@@ -25,7 +25,8 @@ function MemoryMatchGame(){
     }
 
     this.setupCardImgs = function(){
-        var images = this.imageList.concat(this.imageList);
+        var doubleImages = this.imageList.concat(this.imageList);
+        var images = this.randomizeCards(doubleImages);
         this.cards = this.createCards(images);
     }
 
@@ -38,6 +39,16 @@ function MemoryMatchGame(){
             cardList.push(newCard);
         }
         return cardList;
+    }
+
+    this.randomizeCards = function(array){
+        for (var i = array.length - 1; i > 0; i--){
+            var j = Math.floor(Math.random() * (i + 1));
+            var hold = array[i];
+            array[i] = array[j];
+            array[j] = hold;
+        }
+        return array;
     }
 
     this.handleCardClick = function(cardObjClicked){
