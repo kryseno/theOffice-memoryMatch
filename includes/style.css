@@ -9,21 +9,21 @@ body{
     background-position: 20%;
     background-size: cover;
     font-family: Montserrat, sans-serif;
-    font-size: 2vmin;
+    font-size: 0;
 }
 .container{
-    width: 80%;
+    width: 1150px;
+    height: 600px;
     padding: 35px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0 auto;
 }
 
 /****************************/
 /********** HEADER **********/
 /****************************/
 .header{
-    width: 98%;
-    height: 30%;
+    width: 100%;
+    /* height: 20%; */
     display: flex;
     justify-content: center;
     text-align: center;
@@ -69,14 +69,14 @@ a:hover{
 /*********** STATS ***********/
 /*****************************/
 .statsContainer{
-    height: 62vh;
+    height: 80%;
     width: 20%;
     display: inline-block;
     background: rgba(255, 255, 255, 0.5);
     text-align: center;
     text-transform: uppercase;
     border-radius: 8px;
-    padding-top: 3%;
+    /* padding-top: 3%; */
     font-size: 20px;
 }
 /* .statsContainer div{
@@ -95,11 +95,11 @@ a:hover{
 /********** GAME AREA **********/
 /*******************************/
 .gameArea {
+    height: 80%;
+    width: 80%;
     vertical-align: top;
     display: inline-flex;
     flex-flow: row wrap;
-    height: 67vh;
-    width: 78%;
     background: rgba(255, 255, 255, 0.5);
     align-items: center;
     justify-content: space-evenly;
@@ -291,7 +291,9 @@ audio{
 /***********************************/
 /********** MEDIA QUERIES **********/
 /***********************************/
-@media only screen and (min-width: 768px) and (max-width: 1023px){
+@media only screen 
+    and (min-width: 768px) 
+    and (max-width: 1023px){
     .header{
         width: 98%;
         height: 20%;
@@ -305,11 +307,17 @@ audio{
         width: 20%;
     }
     .gameArea{
-        height: 67vh;
+        height: 64vh;
         width: 78%;
     }
+    .card{
+        height: 25%;
+    }
 }
-@media (min-width: 320px) and (max-width: 767px){
+@media (min-width: 320px) 
+    and (max-width: 767px)
+    /* and (orientation: landscape) */
+    {
     .container{
         height: 300px;
         width: 100%;
@@ -343,7 +351,10 @@ audio{
         width: 12%;
     }
 }
-@media (min-width: 375px) and (max-width: 424px){
+@media (min-width: 375px) 
+    and (max-width: 424px)
+    /* and (orientation: landscape) */
+    {
     .header{
         height: 45%;
     }
@@ -351,7 +362,10 @@ audio{
         height: 23%;
     }
 } 
-@media (min-width: 425px) and (max-width: 767px){
+@media (min-width: 425px) 
+    and (max-width: 767px)
+    /* and (orientation: landscape) */
+    {
     .header{
         height: 50%;
     }
