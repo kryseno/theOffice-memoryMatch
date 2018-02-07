@@ -478,22 +478,6 @@ a:hover{
         font: bold 25px Montserrat, sans-serif;
     }
 }
-@media (min-width: 375px) 
-    and (max-width: 424px)
-    /* and (orientation: landscape) */
-    {
-    #audio{
-        position: absolute;
-        top: 35%;
-        left: 3%;
-    }
-    #reset{
-        position: absolute;
-        top: 35%;
-        bottom: 0;
-        right: 3%;
-    }
-} 
 @media (min-width: 320px)
     and (max-width: 374px)
     /* and (orientation: landscape) */ {
@@ -531,6 +515,22 @@ a:hover{
         height: 25%;
         width: 16%;
         margin: 0;
+    }
+}
+@media (min-width: 375px) 
+    and (max-width: 424px)
+    /* and (orientation: landscape) */
+    {
+    #audio{
+        position: absolute;
+        top: 35%;
+        left: 3%;
+    }
+    #reset{
+        position: absolute;
+        top: 35%;
+        bottom: 0;
+        right: 3%;
     }
 }
 @media (max-width: 425px) {

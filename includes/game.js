@@ -75,6 +75,9 @@ function MemoryMatchGame() {
     =================================================================*/
     this.handleCardClick = function (cardObjClicked) {
         if (this.clickedCardsList.length < 2) {
+            if (this.clickedCardsList[0] == cardObjClicked){
+                return;
+            }
             this.clickedCardsList.push(cardObjClicked);
             cardObjClicked.revealSelf();
 
