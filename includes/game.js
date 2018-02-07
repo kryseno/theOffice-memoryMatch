@@ -24,8 +24,8 @@ function MemoryMatchGame() {
 
     this.initializeGame = function () {
         this.setupCardImgs();
-        // this.handleReset();
         this.handleAudio();
+        this.handleReset();
         // this.handleAudioPlay();
         // this.handleAudioStop();
         // this.handleInstructionsModal();
@@ -162,7 +162,7 @@ function MemoryMatchGame() {
     }
 
     this.handleReset = function () {
-        $(".fa-sync").click(this.resetGame.bind(this));
+        $("#reset").click(this.resetGame.bind(this));
         console.log('reset clicked');
     }
 
