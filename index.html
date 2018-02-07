@@ -1,16 +1,18 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Memory Match Game</title>
-        <link rel="stylesheet" href="includes/style.css">
-        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-        <!-- <script src="includes/main.js"></script> -->
-        <script src="includes/oop.js"></script>
-        <script src="includes/card.js"></script>
-        <script src="includes/game.js"></script>
-    </head>
-    <body>
-        <div class="container">
+
+<head>
+    <title>Memory Match Game</title>
+    <link rel="stylesheet" href="includes/style.css">
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <!-- <script src="includes/main.js"></script> -->
+    <script src="includes/oop.js"></script>
+    <script src="includes/card.js"></script>
+    <script src="includes/game.js"></script>
+</head>
+
+<body>
+    <div class="container">
         <div class="victory_modal">
             <div id="modal_body">
                 <span class="victory_nailed_it">NAILED IT</span>
@@ -19,9 +21,23 @@
             <div id="modal_shadow"></div>
         </div>
 
-        <header>
-            <img id="logo" src="images/dunderMifflin.png" alt="Dunder Mifflin Logo">
-            <div class="center">
+        <div class="header">
+            <img id="office_sign" src="images/the_office_sign.jpg" alt="">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="">settings</a>
+                    </li>
+                    <li>
+                        <a href="about.html">about</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- <header> -->
+        <!-- <img id="logo" src="images/dunderMifflin.png" alt="Dunder Mifflin Logo"> -->
+        <!-- <div class="center">
                 <img id="office_sign" src="images/the_office_sign.jpg" alt="">
                 <nav>
                     <ul>
@@ -29,10 +45,9 @@
                         <li><a href="about.html">about</a></li>
                     </ul>
                 </nav>
-            </div>
-            <img id="peoplePersonsImg" src="images/peoplePersons.jpg" alt="The People Person's Paper People">
-
-        </header>
+            </div> -->
+        <!-- <img id="peoplePersonsImg" src="images/peoplePersons.jpg" alt="The People Person's Paper People"> -->
+        <!-- </header> -->
 
         <div class="stats_container">
             <div class="games-played">
@@ -64,5 +79,6 @@
 
         <div class="game-area"></div>
     </div>
-    </body>
+</body>
+
 </html>
