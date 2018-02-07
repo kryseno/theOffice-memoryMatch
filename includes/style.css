@@ -78,6 +78,9 @@ a:hover{
     padding-top: 3%;
     font-size: 20px;
 }
+/* .statsContainer div{
+    height: 100%;
+} */
 .label{
     font-weight: bold;
 }
@@ -283,3 +286,68 @@ audio{
     right: 30%;
     height: 15%;
 }
+
+/***********************************/
+/********** MEDIA QUERIES **********/
+/***********************************/
+@media only screen and (min-width: 768px) {
+    .header{
+        width: 98%;
+        height: 80%;
+    }
+    .statsContainer{
+        height: 62vh;
+        width: 20%;
+    }
+    .gameArea{
+        height: 67vh;
+        width: 78%;
+    }
+}
+@media (min-width: 320px) {
+    .container{
+        height: 300px;
+        width: 100%;
+        padding: 70px 0;
+    }
+    .header{
+        height: 40%;
+    }
+    .header img {
+        width: 100%;
+    }
+    .statsContainer{
+        display: block;
+        height: 20%;
+        width: 100%;
+        font-size: 1em;
+    }
+    .games-played,
+    .attempts,
+    .accuracy{
+        display: inline-block;
+    }
+    .statsButtons{
+        display: block;
+    }
+    .gameArea{
+        height: 45vh;
+        width: 100%;
+    }
+    .card{
+        width: 12%;
+    }
+}
+@media (min-width: 375px) {
+    .header{
+        height: 45%;
+    }
+    .statsContainer{
+        height: 23%;
+    }
+} 
+@media (min-width: 425px) {
+    .header{
+        height: 50%;
+    }
+} 
