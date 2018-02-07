@@ -1,21 +1,19 @@
-body, html{
-    margin: 2px;
-    padding: 0;
-}
 body{
-    background-image: url('../images/dunderMifflinPainting.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: 20%;
+    background: url(../images/dunderMifflinPainting.jpg) no-repeat fixed center;
     background-size: cover;
     font-family: Montserrat, sans-serif;
     font-size: 0;
+    margin: 0;
+    padding: 8vh 0;
 }
 .container{
     width: 1150px;
     height: 600px;
-    padding: 35px;
+    /* padding: 35px; */
     margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 8px;
+    position: relative;
 }
 
 /****************************/
@@ -23,13 +21,14 @@ body{
 /****************************/
 .header{
     width: 100%;
-    /* height: 20%; */
+    height: 25%;
     display: flex;
     justify-content: center;
     text-align: center;
     background: rgba(255, 255, 255, 0.5);
     color: white;
     border-radius: 8px;
+    position: absolute;
 }
 .header img{
     width: 40%;
@@ -69,7 +68,7 @@ a:hover{
 /*********** STATS ***********/
 /*****************************/
 .statsContainer{
-    height: 80%;
+    height: 75%;
     width: 20%;
     display: inline-block;
     background: rgba(255, 255, 255, 0.5);
@@ -79,6 +78,8 @@ a:hover{
     box-sizing: border-box;
     padding: 3% 0;
     font-size: 20px;
+    position: absolute;
+    top: 25%;
 }
 .games-played,
 .attempts,
@@ -106,7 +107,7 @@ a:hover{
 /********** GAME AREA **********/
 /*******************************/
 .gameArea {
-    height: 80%;
+    height: 75%;
     width: 80%;
     vertical-align: top;
     display: inline-flex;
@@ -115,8 +116,9 @@ a:hover{
     align-items: center;
     justify-content: space-evenly;
     border-radius: 8px;
-    /* padding: 0 8% 3% 8%;
-    margin-top: 0.2%; */
+    position: absolute;
+    top: 25%;
+    left: 20%;
 }
 .card{
     height: 30%;
@@ -124,6 +126,7 @@ a:hover{
     border: 1px solid black;
     border-radius: 8px;
     position: relative;
+    box-sizing: border-box;
     margin: 0.8% 1.5% 0.8% 1.5%;
 }
 .back{
