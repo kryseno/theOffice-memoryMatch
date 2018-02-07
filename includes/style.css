@@ -76,19 +76,30 @@ a:hover{
     text-align: center;
     text-transform: uppercase;
     border-radius: 8px;
-    /* padding-top: 3%; */
+    box-sizing: border-box;
+    padding: 3% 0;
     font-size: 20px;
 }
-/* .statsContainer div{
-    height: 100%;
-} */
+.games-played,
+.attempts,
+.accuracy{
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 3%;
+    margin: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: rgba(255, 255, 255, 0.7);
+}
 .label{
+    padding: 3% 0;
     font-weight: bold;
+    text-decoration: underline;
 }
 .reset{
     font-size: 1em;
     border: 1px solid black;
     border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /*******************************/
