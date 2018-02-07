@@ -134,6 +134,16 @@ body {
     left: 20%;
 }
 
+.cardContainer {
+    height: 210px;
+    position: relative;
+    border: 1px solid #ccc;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+}
+
 .card {
     height: 30%;
     width: 12%;
@@ -142,6 +152,26 @@ body {
     position: relative;
     box-sizing: border-box;
     margin: 0.8% 1.5% 0.8% 1.5%;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+}
+
+.card div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .back {
@@ -169,6 +199,12 @@ body {
     border-radius: 8px;
     height: 100%;
     width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
 }
 
 .card .back img {
@@ -176,6 +212,13 @@ body {
     top: 25%;
     max-width: 100%;
     max-height: 100%;
+}
+
+.card .flipped {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
 }
 
 /*==========================================
@@ -233,7 +276,7 @@ body {
 /*==========================================
 
                 MEDIA QUERIES
-                
+
 ==========================================*/
 
 /* @media only screen 
