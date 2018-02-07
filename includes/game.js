@@ -35,7 +35,7 @@ function MemoryMatchGame(){
         for(var i=0; i<images.length; i++){
             var newCard = new Card(images[i], this.backgroundImg, this);
             var cardDomElement = newCard.render();
-            $(".game-area").append(cardDomElement);
+            $(".gameArea").append(cardDomElement);
             cardList.push(newCard);
         }
         return cardList;
