@@ -21,8 +21,8 @@ function MemoryMatchGame() {
 
     this.initializeGame = function () {
         this.setupCardImgs();
-        // this.handleReset();
-        this.handleInstructionsModal();
+        this.handleReset();
+        // this.handleInstructionsModal();
     }
 
     /*=================================================================
@@ -76,14 +76,16 @@ function MemoryMatchGame() {
                 if (this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()) {
                     console.log('issa match!!');
                     this.matchCount++;
-                    this.updateAttemptsAccuracy();
+                    this.attempts++
+                    this.calculateAccuracy();
                     setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if (this.matchCount === this.cards.length / 2) {
                         this.playerWins();
                     }
                 } else {
                     console.log('issa not a match!!');
-                    this.updateAttemptsAccuracy();
+                    this.attempts++;
+                    this.calculateAccuracy();
                     setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                 }
             }
@@ -92,6 +94,7 @@ function MemoryMatchGame() {
 
     this.playerWins = function () {
         console.log('player wins!');
+        this.showVictoryModal();
     }
 
     this.revertClickedCards = function () {
@@ -117,16 +120,22 @@ function MemoryMatchGame() {
                     Calculate & Display Statistics
 
     =================================================================*/
-    this.updateAttemptsAccuracy = function () {
-        this.attempts++;
-        this.accuracy = Math.round((this.matchCount / this.attempts) * 100);
+    this.updateStats = function() {
+        this.displayStats();
+    };
 
+    this.displayStats = function() {
         $(".attempts .value").text(this.attempts);
         $(".accuracy .value").text(this.accuracy);
     }
 
+    this.calculateAccuracy = function () {
+        this.accuracy = Math.round((this.matchCount / this.attempts) * 100);
+        return this.accuracy;
+    }
+
     this.clearGameArea = function () {
-        $(".game-area").empty();
+        $(".gameArea").empty();
     }
 
     this.resetStats = function () {
@@ -147,18 +156,43 @@ function MemoryMatchGame() {
     }
 
     this.handleReset = function () {
-        $('.fa-sync').click(this.resetGame.bind(this));
+        $(".fa-sync").click(this.resetGame.bind(this));
         console.log('reset clicked');
     }
 
-    /*=================================================================
+     /*=================================================================
 
-                            Instructions
+                            Victory Modal
 
     =================================================================*/
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    this.showVictoryModal = function(){
+        console.log('victory modal shown');
+        $(".modal").show();
+        this.handleCloseX();
+    }
 
+    this.handleCloseX = function(){
+        $(".close").click(this.closeModalX.bind(this));
+        console.log('setting click on span');
+    }
+
+    this.closeModalX = function () {
+        $(".modal").hide();
+        this.resetGame();
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    // window.onclick = function (event) {
+    //     if (event.target == modal) {
+    //         modal.style.display = "none";
+    //     }
+    // }
+
+    /*=================================================================
+
+                            Instructions Modal
+
+    =================================================================*/
     // When the user clicks on the button, open the modal 
     this.handleInstructionsModal = function () {
         // Get the modal
