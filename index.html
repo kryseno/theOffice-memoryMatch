@@ -15,7 +15,7 @@
 
 <body>
     <div class="container">
-        <!-- VICTORY MODAL-->
+
         <!-- <div class="victory_modal">
             <div id="modal_body">
                 <span class="victory_nailed_it">NAILED IT</span>
@@ -41,7 +41,7 @@
 
         <!-- STATS -->
         <div class="leftContainer">
-            <div class="audio">
+            <div id="audio">
                 <i class="fas fa-volume-up fa-2x"></i>
                 <!-- <audio controls autoplay loop>
                     <source src="audio/office.mp3" type="audio/mpeg">
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="statsButtons">
-                <i class="fas fa-question fa-2x" id="directions"></i>
+                <!-- <i class="fas fa-question fa-2x" id="directions"></i> -->
                 <i class="fas fa-sync fa-2x" id="reset"></i>
                 <!-- <button class="reset">Reset Game</button> -->
             </div>
@@ -76,6 +76,19 @@
 
         <!-- GAME AREA -->
         <div class="gameArea"></div>
+    </div>
+    <!-- VICTORY MODAL-->
+    <div id="victoryModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>
+                <span>YOU WON!</span>
+                <img src="images/victoryImg.gif">
+            </p>
+        </div>
+
     </div>
 </body>
 

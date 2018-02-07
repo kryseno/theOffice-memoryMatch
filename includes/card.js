@@ -31,6 +31,7 @@ function Card(frontImg, backImg, parentObj) {
 
     this.handleClick = function(){
         this.parentObj.handleCardClick(this);
+        this.parentObj.updateStats();
     }
 
     this.revealSelf = function(){
