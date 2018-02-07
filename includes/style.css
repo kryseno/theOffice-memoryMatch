@@ -386,7 +386,7 @@ audio{
 /***********************************/
 /********** MEDIA QUERIES **********/
 /***********************************/
-@media only screen 
+/* @media only screen 
     and (min-width: 768px) 
     and (max-width: 1023px){
     .header{
@@ -408,27 +408,40 @@ audio{
     .card{
         height: 25%;
     }
-}
+} */
 @media (min-width: 320px) 
     and (max-width: 767px)
     /* and (orientation: landscape) */
     {
+    body{
+        padding: 3vh 0;
+    }
     .container{
-        height: 300px;
+        height: 750px;
         width: 100%;
-        padding: 70px 0;
+        /* padding: 50px 0; */
     }
     .header{
-        height: 40%;
+        height: 15%;
+        width: 100%;
+        left: 0;
     }
     .header img {
+        width: 70%;
+        height: 100%;
+        position: absolute;
+        left: 16%;
+    }
+    .leftContainer {
+        height: 10%;
         width: 100%;
+        top: 15%;
     }
     .statsContainer{
-        display: block;
-        height: 20%;
-        width: 100%;
-        font-size: 1em;
+        font-size: 12px;
+        width: 85%;
+        position: absolute;
+        left: 8%;
     }
     .games-played,
     .attempts,
@@ -438,30 +451,80 @@ audio{
     .statsButtons{
         display: block;
     }
+    #audio{
+        position: absolute;
+        top: 35%;
+        left: 3%;
+    }
+    #reset{
+        position: absolute;
+        top: 35%;
+        bottom: 0;
+        right: 3%;
+    }
     .gameArea{
-        height: 45vh;
+        height: 50%;
         width: 100%;
+        top: 25%;
+        left: 0;
     }
     .card{
-        width: 12%;
+        width: 16%;
+        margin: 0;
     }
 }
 @media (min-width: 375px) 
     and (max-width: 424px)
     /* and (orientation: landscape) */
     {
-    .header{
-        height: 45%;
+    #audio{
+        position: absolute;
+        top: 35%;
+        left: 3%;
     }
-    .statsContainer{
-        height: 23%;
+    #reset{
+        position: absolute;
+        top: 35%;
+        bottom: 0;
+        right: 3%;
     }
 } 
-@media (min-width: 425px) 
-    and (max-width: 767px)
-    /* and (orientation: landscape) */
-    {
+@media (min-width: 320px)
+    and (max-width: 374px)
+    /* and (orientation: landscape) */ {
     .header{
+        height: 12%;
+        width: 100%;
+        left: 0;
+    }
+    .leftContainer{
+        height: 10%;
+        width: 100%;
+        top: 12%;
+    }
+    .statsContainer{
+        font-size: 8px;
+        width: 85%;
+        height: 75%;
+        position: absolute;
+        top: 23%;
+        left: 8%;
+    }
+    #audio{
+        top: 22%;
+    }
+    #reset{
+        top: 22%;
+    }
+    .gameArea{
         height: 50%;
+        width: 100%;
+        top: 22%;
+        left: 0;
+    }
+    .card{
+        height: 25%;
+        width: 16%;
+        margin: 0;
     }
 } 
