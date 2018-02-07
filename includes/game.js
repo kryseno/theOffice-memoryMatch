@@ -16,12 +16,18 @@ function MemoryMatchGame() {
         'images/stanley.jpg',
         'images/toby.jpg'
     ];
+    this.audioList = [
+        'audio/office.mp3'
+    ]
     this.matchCount = 0;
     this.revertTime = 2000;
 
     this.initializeGame = function () {
         this.setupCardImgs();
-        this.handleReset();
+        // this.handleReset();
+        this.handleAudio();
+        // this.handleAudioPlay();
+        // this.handleAudioStop();
         // this.handleInstructionsModal();
     }
 
@@ -77,7 +83,7 @@ function MemoryMatchGame() {
                     console.log('issa match!!');
                     this.matchCount++;
                     this.attempts++
-                    this.calculateAccuracy();
+                        this.calculateAccuracy();
                     setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if (this.matchCount === this.cards.length / 2) {
                         this.playerWins();
@@ -120,11 +126,11 @@ function MemoryMatchGame() {
                     Calculate & Display Statistics
 
     =================================================================*/
-    this.updateStats = function() {
+    this.updateStats = function () {
         this.displayStats();
     };
 
-    this.displayStats = function() {
+    this.displayStats = function () {
         $(".attempts .value").text(this.attempts);
         $(".accuracy .value").text(this.accuracy);
     }
@@ -160,18 +166,18 @@ function MemoryMatchGame() {
         console.log('reset clicked');
     }
 
-     /*=================================================================
+    /*=================================================================
 
                             Victory Modal
 
     =================================================================*/
-    this.showVictoryModal = function(){
+    this.showVictoryModal = function () {
         console.log('victory modal shown');
         $(".modal").show();
         this.handleCloseX();
     }
 
-    this.handleCloseX = function(){
+    this.handleCloseX = function () {
         $(".close").click(this.closeModalX.bind(this));
         console.log('setting click on span');
     }
@@ -217,4 +223,47 @@ function MemoryMatchGame() {
     //         modal.style.display = "none";
     //     }
     // }
+
+    /*=================================================================
+
+                            Handle Audio
+
+    =================================================================*/
+
+    this.handleAudio = function () {
+        var audio = $("#audio");
+        audio.click(this.controlSound.bind(this));
+        // var play = $("#playAudio");
+        // var pause = $("#pauseAudio");
+        // play.click(this.controlSound.bind(this));
+        // pause.click(this.controlSound.bind(this));
+    }
+    this.controlSound = function () {
+        console.log('vol clicked');
+        var audio = $("audio");
+        if (audio.paused) {
+            $("#audioBtn").removeClass('fa-volume-off');
+            $("#audioBtn").addClass('fa-volume-up');
+            audio[0].play();
+        } else {
+            $("#audioBtn").removeClass('fa-volume-up');
+            $("#audioBtn").addClass('fa-volume-off');
+            audio[0].pause();
+        }
+    }
+
+    // this.handleAudioPlay = function () {
+    //     $('#audio').on('click', '.fa-volume-up', () => {
+    //         console.log('volume clicked');
+    //         $('.fa-volume-up').attr('class', 'fa fa-volume-down');
+    //         this.soundList[0].play();
+    //     });
+    // };
+
+    // this.handleAudioStop = function () {
+    //     $('#audio').on('click', '.fa-volume-down', () => {
+    //         $('.fa-volume-down').attr('class', 'fa fa-volume-up');
+    //         this.soundList[0].pause();
+    //     });
+    // };
 }
