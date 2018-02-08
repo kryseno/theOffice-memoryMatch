@@ -241,7 +241,7 @@ function MemoryMatchGame() {
     this.controlSound = function () {
         console.log('vol clicked');
         var audio = $("audio");
-        if (audio.paused) {
+        if (audio[0].paused) {
             $("#audioBtn").removeClass('fa-volume-off');
             $("#audioBtn").addClass('fa-volume-up');
             audio[0].play();
