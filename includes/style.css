@@ -157,16 +157,17 @@ body {
 .reveal .back {
     display: none;
 }
+
 .front {
     position: absolute;
     width: 100%;
     height: 100%;
+    border: 1px solid black;
+    border-radius: 8px;
 }
 
 .card .front img {
     position: absolute;
-    border: 1px solid black;
-    border-radius: 8px;
     height: 100%;
     width: 100%;
 }
@@ -348,6 +349,15 @@ body {
 
     .modal-content span {
         font: bold 25px Montserrat, sans-serif;
+    }
+}
+
+@media (min-width: 426px)
+    and (max-width: 767px) {
+    .card {
+        width: 12%;
+        height: 22%;
+        margin: 4% 2%;
     }
 }
 @media (min-width: 320px)

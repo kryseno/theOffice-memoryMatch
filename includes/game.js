@@ -159,14 +159,14 @@ function MemoryMatchGame() {
     }
 
     this.resetGame = function () {
+        console.log('reset clicked');
         this.resetStats();
         this.clearGameArea();
         this.setupCardImgs();
     }
 
     this.handleReset = function () {
-        $("#reset").click(this.resetGame.bind(this));
-        console.log('reset clicked');
+        $(".statsButtons").on("click", "#reset", this.resetGame.bind(this));
     }
 
     /*=================================================================
