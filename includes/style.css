@@ -14,8 +14,8 @@ body {
 }
 
 .container {
-    width: 100%;
     height: 100%;
+    margin: 3%;
     border-radius: 8px;
     box-sizing: border-box;
 }
@@ -222,15 +222,41 @@ body {
 */
 
 @media (min-width: 1281px) {}
+    .container {
+        margin: 1%;
+    }
 
+    .games-played,
+    .attempts,
+    .accuracy {
+        margin-bottom: 15%;
+    }
 /* 
 ##Device = Laptops, Desktops
 ##Screen = B/w 1025px to 1280px
 */
 
 @media (min-width: 1025px) and (max-width: 1280px) {
+    .header {
+        height: 17%;
+    }
+    
     .card {
-        max-width: 99px;
+        max-width: 115px;
+        width: 11%;
+        height: 27%;
+    }
+
+    .leftContainer {
+        font-size: 15px;
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    .games-played,
+    .attempts,
+    .accuracy {
+        margin: 16% 0;
     }
 }
 
@@ -249,15 +275,15 @@ body {
         height: 27%;
     }
     .leftContainer {
-        font-size: 13px;
+        font-size: 15px;
         display: inline-flex;
         flex-direction: column;
-        padding-top: 5%;
     }
     .games-played,
     .attempts,
     .accuracy {
-        margin: 35% 0;
+        margin: 25% 0;
+        padding-bottom: 5%;
     }
 }
 
@@ -295,8 +321,8 @@ body {
         margin: 5% 0 5% 5%;
     }
     .statsContainer {
-        display: inline-block;
         width: 100%;
+        display: inline-block;
         margin: 2% 0;
     }
     .games-played,
@@ -310,8 +336,8 @@ body {
         margin: 6% 5% 5% 0;
     }
     .gameArea {
-        height: 73%;
         width: 100%;
+        height: 73%;
         float: unset;
         align-content: unset;
     }
@@ -349,8 +375,8 @@ body {
         margin: 5% 0 5% 5%;
     }
     .statsContainer {
-        display: inline-block;
         width: 100%;
+        display: inline-block;
         margin: 2% 0;
     }
     .games-played,
@@ -364,10 +390,11 @@ body {
         margin: 6% 5% 5% 0;
     }
     .gameArea {
-        height: 73%;
         width: 100%;
+        height: 73%;
         float: unset;
         align-content: unset;
+        padding: 8% 0 0 0;
     }
     .card {
         width: 15%;
