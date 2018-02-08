@@ -26,8 +26,6 @@ function MemoryMatchGame() {
         this.setupCardImgs();
         this.handleAudio();
         this.handleReset();
-        // this.handleAudioPlay();
-        // this.handleAudioStop();
         // this.handleInstructionsModal();
     }
 
@@ -234,8 +232,7 @@ function MemoryMatchGame() {
     =================================================================*/
 
     this.handleAudio = function () {
-        var audio = $("#audio");
-        audio.click(this.controlSound.bind(this));
+        $(".audio").on("click", "#audioBtn", this.controlSound.bind(this));
         // var play = $("#playAudio");
         // var pause = $("#pauseAudio");
         // play.click(this.controlSound.bind(this));
@@ -249,6 +246,7 @@ function MemoryMatchGame() {
             $("#audioBtn").addClass('fa-volume-up');
             audio[0].play();
         } else {
+            console.log('paused music');
             $("#audioBtn").removeClass('fa-volume-up');
             $("#audioBtn").addClass('fa-volume-off');
             audio[0].pause();
