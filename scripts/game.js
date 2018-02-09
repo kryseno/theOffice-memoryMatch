@@ -80,7 +80,9 @@ function MemoryMatchGame() {
             cardObjClicked.revealSelf();
 
             if (this.clickedCardsList.length === 2) {
-                if (this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()) {
+                var card1 = this.clickedCardsList[0].getID();
+                var card2 = this.clickedCardsList[1].getID();
+                if (card1 === card2) {
                     console.log('issa match!!');
                     this.matchCount++;
                     this.attempts++
@@ -93,7 +95,7 @@ function MemoryMatchGame() {
                     console.log('issa not a match!!');
                     this.attempts++;
                     this.accuracy();
-                    cardObjClicked.handlers.mismatch(this.clickedCardsList[0].getID(), this.clickedCardsList[1].getID());
+                    cardObjClicked.handlers.mismatch(card1, card2);
                     setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                 }
             }
