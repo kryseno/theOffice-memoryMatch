@@ -93,6 +93,7 @@ function MemoryMatchGame() {
                     console.log('issa not a match!!');
                     this.attempts++;
                     this.accuracy();
+                    cardObjClicked.handlers.mismatch(this.clickedCardsList[0].getID(), this.clickedCardsList[1].getID());
                     setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                 }
             }

@@ -8,7 +8,8 @@ function Card(frontImg, backImg, parentObj) {
         var card = $("<div>", {
             class: 'card'
         });
-        card.click(this.handleClick.bind(this));
+        // card.click(this.handleClick.bind(this));
+        card.click(this.handlers.click.bind(this));
         
         var front = $("<div>", {
             class: 'front'
@@ -29,10 +30,28 @@ function Card(frontImg, backImg, parentObj) {
         return card;
     }
 
-    this.handleClick = function(){
-        this.parentObj.handleCardClick(this);
-        this.parentObj.updateStats();
+    this.handlers = {
+        click: function(){
+            console.log('this is the card obj handlers.click function');
+            this.parentObj.handleCardClick(this);
+            this.parentObj.updateStats();
+        },
+        mismatch: function(character1, character2){
+            console.log('this is the mismatch in the card obj');
+            if(character1 === "images/michael.jpg" || character2 === "images/michael.jpg"){
+                setTimeout(function(){
+                    var sound = new Audio();
+                    sound.src= 'audio/michaelNoGodNo.mp3';
+                    sound.play();
+                },2000)
+            }
+        }
     }
+
+    // this.handleClick = function(){
+    //     this.parentObj.handleCardClick(this);
+    //     this.parentObj.updateStats();
+    // }
 
     this.revealSelf = function(){
         this.renderedElement.find('.back').hide();
