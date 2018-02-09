@@ -154,8 +154,8 @@ body {
     height: auto;
 }
 
-.reveal .back {
-    display: none;
+.hidden {
+    visibility: hidden
 }
 
 /*==========================================

@@ -26,6 +26,7 @@ function MemoryMatchGame() {
         this.setupCardImgs();
         this.handleAudio();
         this.handleReset();
+        this.handleCloseX();
         // this.handleInstructionsModal();
     }
 
@@ -156,8 +157,7 @@ function MemoryMatchGame() {
         // this.accuracy = 0;
         this.matchCount = 0;
         $(".games-played .value").text(this.gamesPlayed);
-        $(".attempts .value").text(this.attempts);
-        $(".accuracy .value").text(this.accuracy());
+        this.displayStats();
     }
 
     this.resetGame = function () {
@@ -179,7 +179,7 @@ function MemoryMatchGame() {
     this.showVictoryModal = function () {
         console.log('victory modal shown');
         $(".modal").show();
-        this.handleCloseX();
+        // this.handleCloseX();
     }
 
     this.handleCloseX = function () {
