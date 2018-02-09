@@ -1,5 +1,4 @@
 function MemoryMatchGame() {
-    // this.accuracy = 0;
     this.attempts = 0;
     this.backgroundImg = 'images/dunderMifflin.png';
     this.cards = [];
@@ -101,7 +100,6 @@ function MemoryMatchGame() {
     }
 
     this.playerWins = function () {
-        console.log('player wins!');
         this.showVictoryModal();
     }
 
@@ -150,11 +148,14 @@ function MemoryMatchGame() {
         $(".gameArea").empty();
     }
 
+    this.handleReset = function () {
+        $(".statsButtons").on("click", "#reset", this.resetGame.bind(this));
+    }
+
     this.resetStats = function () {
         console.log('reset stats called');
         this.gamesPlayed++;
         this.attempts = 0;
-        // this.accuracy = 0;
         this.matchCount = 0;
         $(".games-played .value").text(this.gamesPlayed);
         this.displayStats();
@@ -167,24 +168,19 @@ function MemoryMatchGame() {
         this.setupCardImgs();
     }
 
-    this.handleReset = function () {
-        $(".statsButtons").on("click", "#reset", this.resetGame.bind(this));
-    }
-
     /*=================================================================
 
                             Victory Modal
 
     =================================================================*/
-    this.showVictoryModal = function () {
-        console.log('victory modal shown');
-        $(".modal").show();
-        // this.handleCloseX();
-    }
-
     this.handleCloseX = function () {
         $(".close").click(this.closeModalX.bind(this));
         console.log('setting click on span');
+    }
+
+    this.showVictoryModal = function () {
+        console.log('victory modal shown');
+        $(".modal").show();
     }
 
     this.closeModalX = function () {
