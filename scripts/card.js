@@ -33,14 +33,12 @@ function Card(frontImg, backImg, parentObj) {
         click: function(){
             this.parentObj.handleCardClick(this);
             this.parentObj.updateStats();
+            // this.handlers.sound();
         },
-        mismatch: function(character1, character2){
-            if(character1 === "images/toby.jpg" && character2 === "images/michael.jpg"
-                    || character2 === "images/toby.jpg" || character1 === "images/michael.jpg"){
-                var sound = new Audio();
-                sound.src= 'audio/michaelNoGodNo.mp3';
-                sound.play();
-            }
+        sound: function(){
+            var sound = new Audio();
+            sound.src= 'audio/michaelNoGodNo.mp3';
+            sound.play();
         }
     }
 
