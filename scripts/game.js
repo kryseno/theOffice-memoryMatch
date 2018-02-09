@@ -1,5 +1,4 @@
 function MemoryMatchGame() {
-    this.accuracy = 0;
     this.attempts = 0;
     this.backgroundImg = 'images/dunderMifflin.png';
     this.cards = [];
@@ -26,6 +25,7 @@ function MemoryMatchGame() {
         this.setupCardImgs();
         this.handleAudio();
         this.handleReset();
+        this.handleCloseX();
         // this.handleInstructionsModal();
     }
 
@@ -84,7 +84,7 @@ function MemoryMatchGame() {
                     console.log('issa match!!');
                     this.matchCount++;
                     this.attempts++
-                        this.calculateAccuracy();
+                        this.accuracy();
                     setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if (this.matchCount === this.cards.length / 2) {
                         this.playerWins();
@@ -92,7 +92,7 @@ function MemoryMatchGame() {
                 } else {
                     console.log('issa not a match!!');
                     this.attempts++;
-                    this.calculateAccuracy();
+                    this.accuracy();
                     setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                 }
             }
@@ -100,7 +100,6 @@ function MemoryMatchGame() {
     }
 
     this.playerWins = function () {
-        console.log('player wins!');
         this.showVictoryModal();
     }
 
@@ -133,27 +132,33 @@ function MemoryMatchGame() {
 
     this.displayStats = function () {
         $(".attempts .value").text(this.attempts);
-        $(".accuracy .value").text(this.accuracy);
+        $(".accuracy .value").text(this.accuracy());
     }
 
-    this.calculateAccuracy = function () {
-        this.accuracy = Math.round((this.matchCount / this.attempts) * 100);
-        return this.accuracy;
+    this.accuracy = function () {
+        var calculatedAccuracy = Math.round((this.matchCount / this.attempts) * 100);
+        if(this.attempts !== 0){
+            return calculatedAccuracy
+        } else {
+            return 0
+        }
     }
 
     this.clearGameArea = function () {
         $(".gameArea").empty();
     }
 
+    this.handleReset = function () {
+        $(".statsButtons").on("click", "#reset", this.resetGame.bind(this));
+    }
+
     this.resetStats = function () {
         console.log('reset stats called');
         this.gamesPlayed++;
         this.attempts = 0;
-        this.accuracy = 0;
         this.matchCount = 0;
         $(".games-played .value").text(this.gamesPlayed);
-        $(".attempts .value").text(this.attempts);
-        $(".accuracy .value").text(this.accuracy);
+        this.displayStats();
     }
 
     this.resetGame = function () {
@@ -163,24 +168,19 @@ function MemoryMatchGame() {
         this.setupCardImgs();
     }
 
-    this.handleReset = function () {
-        $(".statsButtons").on("click", "#reset", this.resetGame.bind(this));
-    }
-
     /*=================================================================
 
                             Victory Modal
 
     =================================================================*/
-    this.showVictoryModal = function () {
-        console.log('victory modal shown');
-        $(".modal").show();
-        this.handleCloseX();
-    }
-
     this.handleCloseX = function () {
         $(".close").click(this.closeModalX.bind(this));
         console.log('setting click on span');
+    }
+
+    this.showVictoryModal = function () {
+        console.log('victory modal shown');
+        $(".modal").show();
     }
 
     this.closeModalX = function () {
