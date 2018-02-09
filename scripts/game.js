@@ -1,5 +1,5 @@
 function MemoryMatchGame() {
-    this.accuracy = 0;
+    // this.accuracy = 0;
     this.attempts = 0;
     this.backgroundImg = 'images/dunderMifflin.png';
     this.cards = [];
@@ -84,7 +84,7 @@ function MemoryMatchGame() {
                     console.log('issa match!!');
                     this.matchCount++;
                     this.attempts++
-                        this.calculateAccuracy();
+                        this.accuracy();
                     setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if (this.matchCount === this.cards.length / 2) {
                         this.playerWins();
@@ -92,7 +92,7 @@ function MemoryMatchGame() {
                 } else {
                     console.log('issa not a match!!');
                     this.attempts++;
-                    this.calculateAccuracy();
+                    this.accuracy();
                     setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                 }
             }
@@ -133,12 +133,16 @@ function MemoryMatchGame() {
 
     this.displayStats = function () {
         $(".attempts .value").text(this.attempts);
-        $(".accuracy .value").text(this.accuracy);
+        $(".accuracy .value").text(this.accuracy());
     }
 
-    this.calculateAccuracy = function () {
-        this.accuracy = Math.round((this.matchCount / this.attempts) * 100);
-        return this.accuracy;
+    this.accuracy = function () {
+        var calculatedAccuracy = Math.round((this.matchCount / this.attempts) * 100);
+        if(this.attempts !== 0){
+            return calculatedAccuracy
+        } else {
+            return 0
+        }
     }
 
     this.clearGameArea = function () {
@@ -149,11 +153,11 @@ function MemoryMatchGame() {
         console.log('reset stats called');
         this.gamesPlayed++;
         this.attempts = 0;
-        this.accuracy = 0;
+        // this.accuracy = 0;
         this.matchCount = 0;
         $(".games-played .value").text(this.gamesPlayed);
         $(".attempts .value").text(this.attempts);
-        $(".accuracy .value").text(this.accuracy);
+        $(".accuracy .value").text(this.accuracy());
     }
 
     this.resetGame = function () {
