@@ -272,6 +272,10 @@ body {
         height: 17%;
     }
 
+    .header img {
+        max-width: 80%;
+    }
+
     .card {
         max-width: 115px;
         width: 11%;
@@ -307,6 +311,10 @@ body {
 @media (min-width: 481px) and (max-width: 767px) {
     .header {
         height: 15%;
+    }
+
+    .header img {
+        max-width: 80%;
     }
 
     .card {
@@ -370,7 +378,11 @@ body {
     .header {
         height: 15%;
     }
-
+    
+    .header img {
+        max-width: 80%;
+    }
+    
     .card {
         max-width: 115px;
         width: 11%;
