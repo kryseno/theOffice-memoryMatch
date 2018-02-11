@@ -245,7 +245,7 @@ body {
     .card {
         max-width: 115px;
         width: 11%;
-        height: 27%;
+        height: 30%;
     }
 
     .leftContainer {
@@ -278,8 +278,9 @@ body {
 
     .card {
         max-width: 115px;
-        width: 11%;
+        width: 15%;
         height: 27%;
+        margin: 0.8% 0;
     }
 
     .leftContainer {
@@ -315,12 +316,6 @@ body {
 
     .header img {
         max-width: 80%;
-    }
-
-    .card {
-        max-width: 115px;
-        width: 11%;
-        height: 27%;
     }
 
     .leftContainer {
@@ -361,13 +356,32 @@ body {
         float: unset;
         align-content: unset;
     }
+}
 
+@media (min-width: 425px) and (max-width: 767px) {
     .card {
-        width: 10%;
-        height: 18%;
-        margin: 0.8% 2% 0.8% 2%;
+        width: 15%;
+        height: 25%;
+        margin: 0.8% 0;
     }
 }
+
+@media (min-width: 375px) and (max-width: 424px) {
+    .card {
+        width: 15%;
+        height: 22%;
+        margin: 0;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+    .card {
+        width: 15%;
+        height: 19%;
+        margin: 0;
+    }
+}
+
 
 /* 
 ##Device = Most of the Smartphones Mobiles (Portrait)
@@ -381,12 +395,6 @@ body {
     
     .header img {
         max-width: 80%;
-    }
-    
-    .card {
-        max-width: 115px;
-        width: 11%;
-        height: 27%;
     }
 
     .leftContainer {
@@ -427,12 +435,6 @@ body {
         float: unset;
         align-content: unset;
         padding: 8% 0 0 0;
-    }
-
-    .card {
-        width: 15%;
-        height: 21%;
-        margin: 0.8% .5% 0.8% .5%;
     }
 
     .modal-content {
