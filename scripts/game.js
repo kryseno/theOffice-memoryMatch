@@ -5,16 +5,16 @@ function MemoryMatchGame() {
     this.clickedCardsList = [];
     this.gamesPlayed = 0;
     this.imageList = [
-        'images/andy.jpg',
-        'images/dwight.jpg',
-        'images/gabe.jpg',
-        'images/jim.jpg',
-        'images/kevin.jpg',
-        'images/michael.jpg',
-        'images/pam.jpg',
-        'images/stanley.jpg',
-        'images/toby.jpg'
-    ];
+        'andy',
+        'dwight',
+        'gabe',
+        'jim',
+        'kevin',
+        'michael',
+        'pam',
+        'stanley',
+        'toby'
+    ].map(image => "images/"+image+".jpg");
     this.audioList = [
         'audio/office.mp3'
     ]
@@ -188,13 +188,6 @@ function MemoryMatchGame() {
         this.resetGame();
     }
 
-    // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function (event) {
-    //     if (event.target == modal) {
-    //         modal.style.display = "none";
-    //     }
-    // }
-
     /*=================================================================
 
                             Instructions Modal
@@ -213,18 +206,6 @@ function MemoryMatchGame() {
         })
     }
 
-    // When the user clicks on <span> (x), close the modal
-    // span.onclick = function () {
-    //     modal.style.display = "none";
-    // }
-
-    // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function (event) {
-    //     if (event.target == modal) {
-    //         modal.style.display = "none";
-    //     }
-    // }
-
     /*=================================================================
 
                             Handle Audio
@@ -233,10 +214,6 @@ function MemoryMatchGame() {
 
     this.handleAudio = function () {
         $(".audio").on("click", "#audioBtn", this.controlSound.bind(this));
-        // var play = $("#playAudio");
-        // var pause = $("#pauseAudio");
-        // play.click(this.controlSound.bind(this));
-        // pause.click(this.controlSound.bind(this));
     }
     this.controlSound = function () {
         console.log('vol clicked');
@@ -252,19 +229,4 @@ function MemoryMatchGame() {
             audio[0].pause();
         }
     }
-
-    // this.handleAudioPlay = function () {
-    //     $('#audio').on('click', '.fa-volume-up', () => {
-    //         console.log('volume clicked');
-    //         $('.fa-volume-up').attr('class', 'fa fa-volume-down');
-    //         this.soundList[0].play();
-    //     });
-    // };
-
-    // this.handleAudioStop = function () {
-    //     $('#audio').on('click', '.fa-volume-down', () => {
-    //         $('.fa-volume-down').attr('class', 'fa fa-volume-up');
-    //         this.soundList[0].pause();
-    //     });
-    // };
 }
