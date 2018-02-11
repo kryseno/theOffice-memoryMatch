@@ -182,8 +182,8 @@ body {
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 700px;
-    height: 475px;
+    max-width: 700px;
+    width: 50%;
 }
 
 .modal-content span {
@@ -220,7 +220,7 @@ body {
 ##Screen = 1281px to higher resolution desktops
 */
 
-@media (min-width: 1281px) {}
+@media (min-width: 1281px) {
     .container {
         margin: 1%;
     }
@@ -231,6 +231,7 @@ body {
         margin-bottom: 15%;
         padding: 2%;
     }
+}
 /* 
 ##Device = Laptops, Desktops
 ##Screen = B/w 1025px to 1280px
@@ -270,16 +271,19 @@ body {
     .header {
         height: 17%;
     }
+
     .card {
         max-width: 115px;
         width: 11%;
         height: 27%;
     }
+
     .leftContainer {
         font-size: 17px;
         display: inline-flex;
         flex-direction: column;
     }
+
     .games-played,
     .attempts,
     .accuracy {
@@ -304,11 +308,13 @@ body {
     .header {
         height: 15%;
     }
+
     .card {
         max-width: 115px;
         width: 11%;
         height: 27%;
     }
+
     .leftContainer {
         width: 100%;
         height: 10%;
@@ -317,31 +323,37 @@ body {
         flex-direction: row;
         justify-content: space-evenly;
     }
+
     .audio {
         display: inline-block;
         margin: 5% 0 5% 5%;
     }
+
     .statsContainer {
         width: 100%;
         display: inline-block;
         margin: 2% 0;
     }
+
     .games-played,
     .attempts,
     .accuracy {
         display: inline-block;
         padding: 2%;
     }
+
     .statsButtons {
         display: inline-block;
         margin: 6% 5% 5% 0;
     }
+
     .gameArea {
         width: 100%;
         height: 73%;
         float: unset;
         align-content: unset;
     }
+
     .card {
         width: 10%;
         height: 18%;
@@ -358,11 +370,13 @@ body {
     .header {
         height: 15%;
     }
+
     .card {
         max-width: 115px;
         width: 11%;
         height: 27%;
     }
+
     .leftContainer {
         width: 100%;
         height: 10%;
@@ -371,25 +385,30 @@ body {
         flex-direction: row;
         justify-content: space-evenly;
     }
+
     .audio {
         display: inline-block;
         margin: 5% 0 5% 5%;
     }
+
     .statsContainer {
         width: 100%;
         display: inline-block;
         margin: 2% 0;
     }
+
     .games-played,
     .attempts,
     .accuracy {
         display: inline-block;
         padding: 2%;
     }
+
     .statsButtons {
         display: inline-block;
         margin: 6% 5% 5% 0;
     }
+
     .gameArea {
         width: 100%;
         height: 73%;
@@ -397,9 +416,20 @@ body {
         align-content: unset;
         padding: 8% 0 0 0;
     }
+
     .card {
         width: 15%;
         height: 21%;
         margin: 0.8% .5% 0.8% .5%;
     }
+
+    .modal-content {
+        margin: 50% auto;
+        width: 60%;
+    }
+
+    .modal-content span {
+        font-size: 20px;
+    }
+
 }
