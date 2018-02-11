@@ -5,16 +5,16 @@ function MemoryMatchGame() {
     this.clickedCardsList = [];
     this.gamesPlayed = 0;
     this.imageList = [
-        'images/andy.jpg',
-        'images/dwight.jpg',
-        'images/gabe.jpg',
-        'images/jim.jpg',
-        'images/kevin.jpg',
-        'images/michael.jpg',
-        'images/pam.jpg',
-        'images/stanley.jpg',
-        'images/toby.jpg'
-    ];
+        'andy',
+        'dwight',
+        'gabe',
+        'jim',
+        'kevin',
+        'michael',
+        'pam',
+        'stanley',
+        'toby'
+    ].map(image => "images/"+image+".jpg");
     this.audioList = [
         'audio/office.mp3'
     ]
