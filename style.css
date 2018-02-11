@@ -229,6 +229,7 @@ body {
     .attempts,
     .accuracy {
         margin-bottom: 15%;
+        padding: 2%;
     }
 /* 
 ##Device = Laptops, Desktops
