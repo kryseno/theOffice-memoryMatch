@@ -15,9 +15,6 @@ function MemoryMatchGame() {
         'stanley',
         'toby'
     ].map(image => "images/"+image+".jpg");
-    this.audioList = [
-        'audio/office.mp3'
-    ]
     this.matchCount = 0;
     this.revertTime = 2000;
 
@@ -26,7 +23,6 @@ function MemoryMatchGame() {
         this.handleAudio();
         this.handleReset();
         this.handleCloseX();
-        // this.handleInstructionsModal();
     }
 
     /*=================================================================
@@ -81,7 +77,6 @@ function MemoryMatchGame() {
 
             if (this.clickedCardsList.length === 2) {
                 if (this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()) {
-                    console.log('issa match!!');
                     this.matchCount++;
                     this.attempts++
                         this.accuracy();
@@ -90,7 +85,6 @@ function MemoryMatchGame() {
                         this.playerWins();
                     }
                 } else {
-                    console.log('issa not a match!!');
                     this.attempts++;
                     this.accuracy();
                     setTimeout(this.revertClickedCards.bind(this), this.revertTime);
@@ -153,7 +147,6 @@ function MemoryMatchGame() {
     }
 
     this.resetStats = function () {
-        console.log('reset stats called');
         this.gamesPlayed++;
         this.attempts = 0;
         this.matchCount = 0;
@@ -162,7 +155,6 @@ function MemoryMatchGame() {
     }
 
     this.resetGame = function () {
-        console.log('reset clicked');
         this.resetStats();
         this.clearGameArea();
         this.setupCardImgs();
@@ -175,35 +167,15 @@ function MemoryMatchGame() {
     =================================================================*/
     this.handleCloseX = function () {
         $(".close").click(this.closeModalX.bind(this));
-        console.log('setting click on span');
     }
 
     this.showVictoryModal = function () {
-        console.log('victory modal shown');
         $(".modal").show();
     }
 
     this.closeModalX = function () {
         $(".modal").hide();
         this.resetGame();
-    }
-
-    /*=================================================================
-
-                            Instructions Modal
-
-    =================================================================*/
-    // When the user clicks on the button, open the modal 
-    this.handleInstructionsModal = function () {
-        // Get the modal
-        var modal = $('.modal');
-        // Get the button that opens the modal
-        var btn = $("#directions");
-
-        $(btn).click(function () {
-            $(modal).css("display", "block");
-            console.log('modal displayed');
-        })
     }
 
     /*=================================================================
@@ -216,14 +188,12 @@ function MemoryMatchGame() {
         $(".audio").on("click", "#audioBtn", this.controlSound.bind(this));
     }
     this.controlSound = function () {
-        console.log('vol clicked');
         var audio = $("audio");
         if (audio[0].paused) {
             $("#audioBtn").removeClass('fa-volume-off');
             $("#audioBtn").addClass('fa-volume-up');
             audio[0].play();
         } else {
-            console.log('paused music');
             $("#audioBtn").removeClass('fa-volume-up');
             $("#audioBtn").addClass('fa-volume-off');
             audio[0].pause();
