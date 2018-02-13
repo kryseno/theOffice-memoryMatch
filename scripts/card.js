@@ -5,10 +5,14 @@ function Card(frontImg, backImg, parentObj) {
     this.renderedElement = null;
 
     this.render = function(){
-        var card = $("<div>", {
-            class: 'card'
+        var cardContainer = $("<div>", {
+            class: 'cardContainer'
         });
-        card.click(this.handleClick.bind(this));
+        cardContainer.click(this.handleClick.bind(this));
+
+        var card = $("<div>", {
+            class: 'card flipped',
+        });
         
         var front = $("<div>", {
             class: 'front'
@@ -22,11 +26,13 @@ function Card(frontImg, backImg, parentObj) {
         var imgSrcBack = $("<img>", {
             src: this.backImg
         });
+        
         front.append(imgSrcFront);
         back.append(imgSrcBack)
         card.append(front, back);
-        this.renderedElement = card;
-        return card;
+        cardContainer.append(card);
+        this.renderedElement = cardContainer;
+        return cardContainer;
     }
 
     this.handleClick = function(){
@@ -35,15 +41,18 @@ function Card(frontImg, backImg, parentObj) {
     }
 
     this.revealSelf = function(){
-        this.renderedElement.find('.back').hide();
+        this.renderedElement.find('.card').toggleClass('flipped');
     }
 
     this.hideSelf = function(){
+        this.renderedElement.find('.card').toggleClass('flipped');
         this.renderedElement.find('.back').show();
     }
 
     this.cardMatch = function(){
-        this.renderedElement.addClass("hidden");
+        this.renderedElement.fadeTo(400, 0, function(){
+            this.renderedElement.addClass("hidden");
+        });
     }
 
     this.getID = function(){
