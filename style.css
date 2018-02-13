@@ -118,11 +118,9 @@ body {
     max-width: 115px;
     width: 15%;
     height: 34%;
-    /* border: 1px solid black; */
     border-radius: 8px;
     margin: 0.8% 2.5% 0.8% 2.5%;
     position: relative;
-    /* border: 1px solid #ccc; */
     -webkit-perspective: 800px;
     -moz-perspective: 800px;
     -o-perspective: 800px;
@@ -307,7 +305,7 @@ body {
         height: 17%;
     }
     
-    .card {
+    .cardContainer {
         max-width: 115px;
         width: 11%;
         height: 30%;
@@ -341,10 +339,10 @@ body {
         max-width: 80%;
     }
 
-    .card {
+    .cardContainer {
         max-width: 115px;
         width: 15%;
-        height: 27%;
+        height: 30%;
         margin: 0.8% 0;
     }
 
@@ -424,7 +422,7 @@ body {
 }
 
 @media (min-width: 425px) and (max-width: 767px) {
-    .card {
+    .cardContainer {
         width: 15%;
         height: 25%;
         margin: 0.8% 0;
@@ -432,7 +430,7 @@ body {
 }
 
 @media (min-width: 375px) and (max-width: 424px) {
-    .card {
+    .cardContainer {
         width: 15%;
         height: 22%;
         margin: 0;
@@ -440,7 +438,7 @@ body {
 }
 
 @media (min-width: 320px) and (max-width: 374px) {
-    .card {
+    .cardContainer {
         width: 15%;
         height: 19%;
         margin: 0;
