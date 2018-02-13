@@ -2,79 +2,50 @@
 <html>
 
 <head>
-    <title>Memory Match Game</title>
+    <title>The Office | Memory Match Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" href="includes/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="icon" href="images/dunderMifflin.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <!-- <script src="includes/main.js"></script> -->
-    <script src="includes/oop.js"></script>
-    <script src="includes/card.js"></script>
-    <script src="includes/game.js"></script>
+    <script src="scripts/oop.js"></script>
+    <script src="scripts/card.js"></script>
+    <script src="scripts/game.js"></script>
 </head>
 
 <body>
     <div class="container">
 
-        <!-- <div class="victory_modal">
-            <div id="modal_body">
-                <span class="victory_nailed_it">NAILED IT</span>
-                <button class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div id="modal_shadow"></div>
-        </div> -->
-
         <!-- HEADER -->
         <div class="header">
-            <img id="office_sign" src="images/the_office_sign.jpg" alt="">
-            <!-- <nav>
-                <ul>
-                    <li>
-                        <a href="">settings</a>
-                    </li>
-                    <li>
-                        <a href="about.html">about</a>
-                    </li>
-                </ul>
-            </nav> -->
+            <img id="office_sign" src="images/theOfficeSign.jpg" alt="">
         </div>
 
         <!-- STATS -->
         <div class="leftContainer">
-            <div id="audio">
-                <i id="audioBtn" class="fas fa-volume-up fa-2x"></i>
-                <!-- <i id="playAudio" class="fas fa-play fa-2x"></i>
-                <i id="pauseAudio" class="fas fa-pause fa-2x"></i> -->
-                <audio autoplay loop>
+            <div class="audio">
+                <i id="audioBtn" class="fas fa-volume-off fa-2x"></i>
+                <audio loop>
                     <source src="audio/office.mp3" type="audio/mpeg">
                 </audio>
             </div>
             <div class="statsContainer">
                 <div class="games-played">
                     <div class="label">Games Played</div>
-                    <!-- <hr> -->
                     <div class="value">0</div>
-                    <!-- <hr> -->
                 </div>
                 <div class="attempts">
                     <div class="label">Attempts</div>
-                    <!-- <hr> -->
                     <div class="value">0</div>
-                    <!-- <hr> -->
                 </div>
                 <div class="accuracy">
                     <div class="label">Accuracy</div>
-                    <!-- <hr> -->
                     <div class="value">0</div>
-                    <!-- <hr> -->
                 </div>
             </div>
             <div class="statsButtons">
                 <!-- <i class="fas fa-question fa-2x" id="directions"></i> -->
-                <i class="fas fa-sync fa-2x" id="reset"></i>
-                <!-- <button class="reset">Reset Game</button> -->
+                <i id="reset" class="fas fa-sync fa-2x"></i>
             </div>
         </div>
 
@@ -88,7 +59,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>
-                <span>YOU WON!</span>
+                <span>NAILED IT!</span>
                 <img src="images/victoryImg.gif">
             </p>
         </div>

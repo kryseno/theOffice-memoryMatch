@@ -59,7 +59,7 @@ function Card(frontImg, backImg, parentObj) {
     }
 
     this.cardMatch = function(){
-        this.renderedElement.css("visibility", "hidden");
+        this.renderedElement.addClass("hidden");
     }
 
     this.getID = function(){

@@ -1,0 +1,449 @@
+html,
+body {
+    margin: 0
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background: url(images/dunderMifflinPainting.jpg) no-repeat fixed center;
+    background-size: cover;
+    font-family: Montserrat, sans-serif;
+    font-size: 0;
+    position: absolute;
+}
+
+.container {
+    height: 100%;
+    margin: 3%;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/*==========================================
+
+                    HEADER
+
+==========================================*/
+
+.header {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    color: white;
+    border-radius: 8px;
+}
+
+.header img {
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+/*==========================================
+
+                    STATS
+
+==========================================*/
+
+.leftContainer {
+    width: 15%;
+    height: 75%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+.statsContainer {
+    margin: 0 10%;
+    box-sizing: border-box;
+}
+
+.games-played,
+.attempts,
+.accuracy {
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-bottom: 26%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    padding: 3% 0;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#directions {
+    position: absolute;
+    bottom: 5%;
+    left: 23%;
+    z-index: 1;
+}
+
+/*==========================================
+
+                GAME AREA
+
+==========================================*/
+
+.gameArea {
+    width: 85%;
+    height: 75%;
+    float: right;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    display: inline-flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    padding: 3% 0;
+    box-sizing: border-box;
+}
+
+.card {
+    max-width: 115px;
+    width: 15%;
+    height: 34%;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 0.8% 2.5% 0.8% 2.5%;
+    position: relative;
+}
+
+.front {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    position: absolute;
+}
+
+.card .front img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.card .back img {
+    width: 100%;
+    height: auto;
+}
+
+.hidden {
+    visibility: hidden
+}
+
+/*==========================================
+
+                    VICTORY
+
+==========================================*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /* background-color: rgb(0, 0, 0); */
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    text-align: center;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 700px;
+    width: 50%;
+}
+
+.modal-content span {
+    font: bold 45px Montserrat, sans-serif;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 85%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*==========================================
+
+                MEDIA QUERIES
+                
+==========================================*/
+
+/* 
+##Device = Desktops
+##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+    .container {
+        margin: 1%;
+    }
+
+    .games-played,
+    .attempts,
+    .accuracy {
+        margin-bottom: 15%;
+        padding: 2%;
+    }
+}
+/* 
+##Device = Laptops, Desktops
+##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .header {
+        height: 17%;
+    }
+    
+    .card {
+        max-width: 115px;
+        width: 11%;
+        height: 30%;
+    }
+
+    .leftContainer {
+        font-size: 20px;
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    .games-played,
+    .attempts,
+    .accuracy {
+        margin: 16% 0;
+        padding-bottom: 3%;
+    }
+}
+
+/* 
+##Device = Tablets, Ipads (portrait)
+##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .header {
+        height: 17%;
+    }
+
+    .header img {
+        max-width: 80%;
+    }
+
+    .card {
+        max-width: 115px;
+        width: 15%;
+        height: 27%;
+        margin: 0.8% 0;
+    }
+
+    .leftContainer {
+        font-size: 17px;
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    .games-played,
+    .attempts,
+    .accuracy {
+        margin: 25% 0;
+        padding: 3% 0 5% 0;
+    }
+}
+
+/* 
+##Device = Tablets, Ipads (landscape)
+##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {}
+
+/* 
+##Device = Low Resolution Tablets, Mobiles (Landscape)
+##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .header {
+        height: 15%;
+    }
+
+    .header img {
+        max-width: 80%;
+    }
+
+    .leftContainer {
+        width: 100%;
+        height: 10%;
+        font-size: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .audio {
+        display: inline-block;
+        margin: 5% 0 5% 5%;
+    }
+
+    .statsContainer {
+        width: 100%;
+        display: inline-block;
+        margin: 2% 0;
+    }
+
+    .games-played,
+    .attempts,
+    .accuracy {
+        display: inline-block;
+        padding: 2%;
+    }
+
+    .statsButtons {
+        display: inline-block;
+        margin: 6% 5% 5% 0;
+    }
+
+    .gameArea {
+        width: 100%;
+        height: 73%;
+        float: unset;
+        align-content: unset;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 767px) {
+    .card {
+        width: 15%;
+        height: 25%;
+        margin: 0.8% 0;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 424px) {
+    .card {
+        width: 15%;
+        height: 22%;
+        margin: 0;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+    .card {
+        width: 15%;
+        height: 19%;
+        margin: 0;
+    }
+}
+
+
+/* 
+##Device = Most of the Smartphones Mobiles (Portrait)
+##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .header {
+        height: 15%;
+    }
+    
+    .header img {
+        max-width: 80%;
+    }
+
+    .leftContainer {
+        width: 100%;
+        height: 10%;
+        font-size: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .audio {
+        display: inline-block;
+        margin: 5% 0 5% 5%;
+    }
+
+    .statsContainer {
+        width: 100%;
+        display: inline-block;
+        margin: 2% 0;
+    }
+
+    .games-played,
+    .attempts,
+    .accuracy {
+        display: inline-block;
+        padding: 2%;
+    }
+
+    .statsButtons {
+        display: inline-block;
+        margin: 6% 5% 5% 0;
+    }
+
+    .gameArea {
+        width: 100%;
+        height: 73%;
+        float: unset;
+        align-content: unset;
+        padding: 8% 0 0 0;
+    }
+
+    .modal-content {
+        margin: 50% auto;
+        width: 60%;
+    }
+
+    .modal-content span {
+        font-size: 20px;
+    }
+
+}

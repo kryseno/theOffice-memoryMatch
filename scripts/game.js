@@ -1,21 +1,20 @@
 function MemoryMatchGame() {
-    this.accuracy = 0;
     this.attempts = 0;
     this.backgroundImg = 'images/dunderMifflin.png';
     this.cards = [];
     this.clickedCardsList = [];
     this.gamesPlayed = 0;
     this.imageList = [
-        'images/andy.jpg',
-        'images/dwight.jpg',
-        'images/gabe.jpg',
-        'images/jim.jpg',
-        'images/kevin.jpg',
-        'images/michael.jpg',
-        'images/pam.jpg',
-        'images/stanley.jpg',
-        'images/toby.jpg'
-    ];
+        'andy',
+        'dwight',
+        'gabe',
+        'jim',
+        'kevin',
+        'michael',
+        'pam',
+        'stanley',
+        'toby'
+    ].map(image => "images/"+image+".jpg");
     this.audioList = [
         'audio/office.mp3'
     ]
@@ -26,8 +25,7 @@ function MemoryMatchGame() {
         this.setupCardImgs();
         this.handleAudio();
         this.handleReset();
-        // this.handleAudioPlay();
-        // this.handleAudioStop();
+        this.handleCloseX();
         // this.handleInstructionsModal();
     }
 
@@ -86,7 +84,7 @@ function MemoryMatchGame() {
                     console.log('issa match!!');
                     this.matchCount++;
                     this.attempts++
-                        this.calculateAccuracy();
+                        this.accuracy();
                     setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if (this.matchCount === this.cards.length / 2) {
                         this.playerWins();
@@ -94,7 +92,7 @@ function MemoryMatchGame() {
                 } else {
                     console.log('issa not a match!!');
                     this.attempts++;
-                    this.calculateAccuracy();
+                    this.accuracy();
                     setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                 }
             }
@@ -102,7 +100,6 @@ function MemoryMatchGame() {
     }
 
     this.playerWins = function () {
-        console.log('player wins!');
         this.showVictoryModal();
     }
 
@@ -135,38 +132,40 @@ function MemoryMatchGame() {
 
     this.displayStats = function () {
         $(".attempts .value").text(this.attempts);
-        $(".accuracy .value").text(this.accuracy);
+        $(".accuracy .value").text(this.accuracy());
     }
 
-    this.calculateAccuracy = function () {
-        this.accuracy = Math.round((this.matchCount / this.attempts) * 100);
-        return this.accuracy;
+    this.accuracy = function () {
+        var calculatedAccuracy = Math.round((this.matchCount / this.attempts) * 100);
+        if(this.attempts !== 0){
+            return calculatedAccuracy
+        } else {
+            return 0
+        }
     }
 
     this.clearGameArea = function () {
         $(".gameArea").empty();
     }
 
+    this.handleReset = function () {
+        $(".statsButtons").on("click", "#reset", this.resetGame.bind(this));
+    }
+
     this.resetStats = function () {
         console.log('reset stats called');
         this.gamesPlayed++;
         this.attempts = 0;
-        this.accuracy = 0;
         this.matchCount = 0;
         $(".games-played .value").text(this.gamesPlayed);
-        $(".attempts .value").text(this.attempts);
-        $(".accuracy .value").text(this.accuracy);
+        this.displayStats();
     }
 
     this.resetGame = function () {
+        console.log('reset clicked');
         this.resetStats();
         this.clearGameArea();
         this.setupCardImgs();
-    }
-
-    this.handleReset = function () {
-        $("#reset").click(this.resetGame.bind(this));
-        console.log('reset clicked');
     }
 
     /*=================================================================
@@ -174,28 +173,20 @@ function MemoryMatchGame() {
                             Victory Modal
 
     =================================================================*/
-    this.showVictoryModal = function () {
-        console.log('victory modal shown');
-        $(".modal").show();
-        this.handleCloseX();
-    }
-
     this.handleCloseX = function () {
         $(".close").click(this.closeModalX.bind(this));
         console.log('setting click on span');
+    }
+
+    this.showVictoryModal = function () {
+        console.log('victory modal shown');
+        $(".modal").show();
     }
 
     this.closeModalX = function () {
         $(".modal").hide();
         this.resetGame();
     }
-
-    // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function (event) {
-    //     if (event.target == modal) {
-    //         modal.style.display = "none";
-    //     }
-    // }
 
     /*=================================================================
 
@@ -215,18 +206,6 @@ function MemoryMatchGame() {
         })
     }
 
-    // When the user clicks on <span> (x), close the modal
-    // span.onclick = function () {
-    //     modal.style.display = "none";
-    // }
-
-    // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function (event) {
-    //     if (event.target == modal) {
-    //         modal.style.display = "none";
-    //     }
-    // }
-
     /*=================================================================
 
                             Handle Audio
@@ -234,39 +213,20 @@ function MemoryMatchGame() {
     =================================================================*/
 
     this.handleAudio = function () {
-        var audio = $("#audio");
-        audio.click(this.controlSound.bind(this));
-        // var play = $("#playAudio");
-        // var pause = $("#pauseAudio");
-        // play.click(this.controlSound.bind(this));
-        // pause.click(this.controlSound.bind(this));
+        $(".audio").on("click", "#audioBtn", this.controlSound.bind(this));
     }
     this.controlSound = function () {
         console.log('vol clicked');
         var audio = $("audio");
-        if (audio.paused) {
+        if (audio[0].paused) {
             $("#audioBtn").removeClass('fa-volume-off');
             $("#audioBtn").addClass('fa-volume-up');
             audio[0].play();
         } else {
+            console.log('paused music');
             $("#audioBtn").removeClass('fa-volume-up');
             $("#audioBtn").addClass('fa-volume-off');
             audio[0].pause();
         }
     }
-
-    // this.handleAudioPlay = function () {
-    //     $('#audio').on('click', '.fa-volume-up', () => {
-    //         console.log('volume clicked');
-    //         $('.fa-volume-up').attr('class', 'fa fa-volume-down');
-    //         this.soundList[0].play();
-    //     });
-    // };
-
-    // this.handleAudioStop = function () {
-    //     $('#audio').on('click', '.fa-volume-down', () => {
-    //         $('.fa-volume-down').attr('class', 'fa fa-volume-up');
-    //         this.soundList[0].pause();
-    //     });
-    // };
 }
