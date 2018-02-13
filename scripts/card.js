@@ -3,16 +3,17 @@ function Card(frontImg, backImg, parentObj) {
     this.backImg = backImg;
     this.parentObj = parentObj;
     this.renderedElement = null;
-    this.cardContainer = null;
 
     this.render = function(){
-        var card = $("<div>", {
-            class: 'card'
-        });
-
-        var cardContainer = $('<div>',{
+        var cardContainer = $("<div>", {
             class: 'cardContainer'
         });
+        cardContainer.click(this.handleClick.bind(this));
+
+        var card = $("<div>", {
+            class: 'card flipped',
+        });
+        // card.click(this.handleClick.bind(this));
         
         var front = $("<div>", {
             class: 'front'
@@ -29,32 +30,24 @@ function Card(frontImg, backImg, parentObj) {
         
         front.append(imgSrcFront);
         back.append(imgSrcBack)
-        card.append(cardContainer);
-        cardContainer.append(front, back);
-        this.cardContainer = cardContainer;
-        card.click(this.handleClick.bind(this));
         card.append(front, back);
-        this.renderedElement = card;
-        return card;
-    }
-
-    this.flip = function(){
-        $(this).addClass('flipped');
+        cardContainer.append(card);
+        this.renderedElement = cardContainer;
+        return cardContainer;
     }
 
     this.handleClick = function(){
-        this.flip.bind(this);
         this.parentObj.handleCardClick(this);
         this.parentObj.updateStats();
     }
 
     this.revealSelf = function(){
-        this.cardContainer.addClass('flipped');
+        this.renderedElement.find('.card').toggleClass('flipped');
         this.renderedElement.find('.back').hide();
     }
 
     this.hideSelf = function(){
-        this.cardContainer.removeClass('flipped');
+        this.renderedElement.find('.card').toggleClass('flipped');
         this.renderedElement.find('.back').show();
     }
 
