@@ -356,6 +356,15 @@ body {
         float: unset;
         align-content: unset;
     }
+
+    .modal-content {
+        margin: 50% auto;
+        width: 60%;
+    }
+
+    .modal-content span {
+        font-size: 20px;
+    }
 }
 
 @media (min-width: 425px) and (max-width: 767px) {
