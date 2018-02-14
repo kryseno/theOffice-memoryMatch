@@ -85,7 +85,7 @@ function MemoryMatchGame() {
                     console.log('issa match!!');
                     this.matchCount++;
                     this.attempts++
-                        this.accuracy();
+                    this.accuracy();
                     setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if (this.matchCount === this.cards.length / 2) {
                         this.playerWins();
@@ -98,8 +98,14 @@ function MemoryMatchGame() {
                         this.clickedCardsList[1].getID() === "toby" ||
                         this.clickedCardsList[0].getID() === "toby" &&
                         this.clickedCardsList[1].getID() === "michael") {
-                            this.playerAudio("michael"+"toby");
+                            this.playerAudio("michael" + "toby");
                             setTimeout(this.revertClickedCards.bind(this), 6500);
+                    } else if (this.clickedCardsList[0].getID() === "dwight" &&
+                        this.clickedCardsList[1].getID() === "jim" ||
+                        this.clickedCardsList[0].getID() === "jim" &&
+                        this.clickedCardsList[1].getID() === "dwight") {
+                            this.playerAudio("dwight" + "jim");
+                            setTimeout(this.revertClickedCards.bind(this), 2000);
                     } else {
                         setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                     }
@@ -109,10 +115,13 @@ function MemoryMatchGame() {
     }
 
     this.playerAudio = function (characters) {
-        console.log('playing playerAudio()');
         var characterReaction = new Audio;
-        characterReaction.src = 'audio/'+characters+'.mp3';
+        characterReaction.src = 'audio/' + characters + '.mp3';
         characterReaction.play();
+        
+        if(characters === "michaeltoby"){
+            characterReaction.currentTime = 3;
+        }
     }
 
     this.playerWins = function () {
