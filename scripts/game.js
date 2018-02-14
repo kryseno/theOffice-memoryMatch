@@ -15,10 +15,6 @@ function MemoryMatchGame() {
         'stanley',
         'toby'
     ].map(image => "images/" + image + ".jpg");
-    this.audioList = {
-        'michaeltoby': 'audio/michaeltoby.mp3',
-        'dwightjim': 'audio/dwightjim.mp3'
-    }
     this.matchCount = 0;
     this.revertTime = 2000;
 
