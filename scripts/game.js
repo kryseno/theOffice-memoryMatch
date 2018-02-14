@@ -72,6 +72,8 @@ function MemoryMatchGame() {
 
     =================================================================*/
     this.handleCardClick = function (cardObjClicked) {
+        var cardOne = this.clickedCardsList[0];
+        var cardTwo = this.clickedCardsList[1];
         if (this.clickedCardsList.length < 2) {
             if (this.clickedCardsList[0] == cardObjClicked){
                 return;
@@ -80,7 +82,7 @@ function MemoryMatchGame() {
             cardObjClicked.revealSelf();
 
             if (this.clickedCardsList.length === 2) {
-                if (this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()) {
+                if (carOne.getID() === cardTwo.getID()) {
                     console.log('issa match!!');
                     this.matchCount++;
                     this.attempts++
@@ -93,10 +95,27 @@ function MemoryMatchGame() {
                     console.log('issa not a match!!');
                     this.attempts++;
                     this.accuracy();
-                    setTimeout(this.revertClickedCards.bind(this), this.revertTime);
+                    if (this.clickedCardsList[0].getID() === this.imageList[5]
+                        && this.clickedCardsList[1].getID() === this.imageList[8]
+                        || this.clickedCardsList[0].getID() === this.imageList[8]
+                        && this.clickedCardsList[1].getID() === this.imageList[5]) {
+                            this.playerAudio();
+                            setTimeout(this.revertClickedCards.bind(this), 6500);
+                    } else {
+                        setTimeout(this.revertClickedCards.bind(this), this.revertTime);
+                    }
                 }
             }
         }
+    }
+
+    this.playerAudio = function () {
+        console.log('playing michaelToby playerAudio()');
+        var michaelToby = new Audio;
+        console.log('new Audio', michaelToby);
+        michaelToby.src = 'audio/michaelNo.mp3';
+        michaelToby.currentTime = 3;
+        michaelToby.play();
     }
 
     this.playerWins = function () {
