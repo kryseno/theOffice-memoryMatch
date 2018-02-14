@@ -23,7 +23,6 @@ function MemoryMatchGame() {
         this.handleAudio();
         this.handleReset();
         this.handleModalClose();
-        // this.handleInstructionsModal();
     }
 
     /*=================================================================
@@ -98,13 +97,13 @@ function MemoryMatchGame() {
                         this.clickedCardsList[1].getID() === "toby" ||
                         this.clickedCardsList[0].getID() === "toby" &&
                         this.clickedCardsList[1].getID() === "michael") {
-                            this.playerAudio("michael" + "toby");
+                            this.playerAudio("michaeltoby");
                             setTimeout(this.revertClickedCards.bind(this), 6700);
                     } else if (this.clickedCardsList[0].getID() === "dwight" &&
                         this.clickedCardsList[1].getID() === "jim" ||
                         this.clickedCardsList[0].getID() === "jim" &&
                         this.clickedCardsList[1].getID() === "dwight") {
-                            this.playerAudio("dwight" + "jim");
+                            this.playerAudio("dwightjim");
                             setTimeout(this.revertClickedCards.bind(this), 2000);
                     } else {
                         setTimeout(this.revertClickedCards.bind(this), this.revertTime);
@@ -207,23 +206,6 @@ function MemoryMatchGame() {
     this.closeModalX = function () {
         $(".modal").hide();
         this.resetGame();
-    }
-
-    /*=================================================================
-
-                            Instructions Modal
-
-    =================================================================*/
-    // When the user clicks on the button, open the modal 
-    this.handleInstructionsModal = function () {
-        // Get the modal
-        var modal = $('.modal');
-        // Get the button that opens the modal
-        var btn = $("#directions");
-
-        $(btn).click(function () {
-            $(modal).css("display", "block");
-        })
     }
 
     /*=================================================================
