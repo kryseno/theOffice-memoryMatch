@@ -14,9 +14,10 @@ function MemoryMatchGame() {
         'pam',
         'stanley',
         'toby'
-    ].map(image => "images/"+image+".jpg");
+    ].map(image => "images/" + image + ".jpg");
     this.audioList = [
-        'audio/office.mp3'
+        'audio/michaeltoby.mp3',
+        'audio/dwightjim.mp3'
     ]
     this.matchCount = 0;
     this.revertTime = 2000;
@@ -73,7 +74,7 @@ function MemoryMatchGame() {
     =================================================================*/
     this.handleCardClick = function (cardObjClicked) {
         if (this.clickedCardsList.length < 2) {
-            if (this.clickedCardsList[0] == cardObjClicked){
+            if (this.clickedCardsList[0] == cardObjClicked) {
                 return;
             }
             this.clickedCardsList.push(cardObjClicked);
@@ -93,10 +94,25 @@ function MemoryMatchGame() {
                     console.log('issa not a match!!');
                     this.attempts++;
                     this.accuracy();
-                    setTimeout(this.revertClickedCards.bind(this), this.revertTime);
+                    if (this.clickedCardsList[0].getID() === "michael" &&
+                        this.clickedCardsList[1].getID() === "toby" ||
+                        this.clickedCardsList[0].getID() === "toby" &&
+                        this.clickedCardsList[1].getID() === "michael") {
+                            this.playerAudio("michael"+"toby");
+                            setTimeout(this.revertClickedCards.bind(this), 6500);
+                    } else {
+                        setTimeout(this.revertClickedCards.bind(this), this.revertTime);
+                    }
                 }
             }
         }
+    }
+
+    this.playerAudio = function (characters) {
+        console.log('playing playerAudio()');
+        var characterReaction = new Audio;
+        characterReaction.src = 'audio/'+characters+'.mp3';
+        characterReaction.play();
     }
 
     this.playerWins = function () {
@@ -137,7 +153,7 @@ function MemoryMatchGame() {
 
     this.accuracy = function () {
         var calculatedAccuracy = Math.round((this.matchCount / this.attempts) * 100);
-        if(this.attempts !== 0){
+        if (this.attempts !== 0) {
             return calculatedAccuracy
         } else {
             return 0
