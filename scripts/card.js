@@ -35,9 +35,17 @@ function Card(frontImg, backImg, parentObj) {
         return cardContainer;
     }
 
-    this.handleClick = function(){
-        this.parentObj.handleCardClick(this);
-        this.parentObj.updateStats();
+    this.handlers = {
+        click: function(){
+            this.parentObj.handleCardClick(this);
+            this.parentObj.updateStats();
+            // this.handlers.sound();
+        },
+        sound: function(){
+            var sound = new Audio();
+            sound.src= 'audio/michaelNoGodNo.mp3';
+            sound.play();
+        }
     }
 
     this.revealSelf = function(){
