@@ -86,7 +86,13 @@ function MemoryMatchGame() {
                     this.matchCount++;
                     this.attempts++
                     this.accuracy();
-                    setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    if (this.clickedCardsList[0].getID() === "michael" &&
+                        this.clickedCardsList[1].getID() === "michael") {
+                            this.playerAudio("michael");
+                            setTimeout(this.hideCardMatch.bind(this), 3000);
+                    } else {
+                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    }
                     if (this.matchCount === this.cards.length / 2) {
                         this.playerWins();
                     }
