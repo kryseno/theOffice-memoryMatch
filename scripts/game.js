@@ -22,7 +22,7 @@ function MemoryMatchGame() {
         this.setupCardImgs();
         this.handleAudio();
         this.handleReset();
-        this.handleCloseX();
+        this.handleModalClose();
     }
 
     /*=================================================================
@@ -69,7 +69,7 @@ function MemoryMatchGame() {
     =================================================================*/
     this.handleCardClick = function (cardObjClicked) {
         if (this.clickedCardsList.length < 2) {
-            if (this.clickedCardsList[0] == cardObjClicked){
+            if (this.clickedCardsList[0] == cardObjClicked) {
                 return;
             }
             this.clickedCardsList.push(cardObjClicked);
@@ -79,17 +79,47 @@ function MemoryMatchGame() {
                 if (this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()) {
                     this.matchCount++;
                     this.attempts++
-                        this.accuracy();
-                    setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    this.accuracy();
+                    if (this.clickedCardsList[0].getID() === "michael" &&
+                        this.clickedCardsList[1].getID() === "michael") {
+                            this.playerAudio("michael");
+                            setTimeout(this.hideCardMatch.bind(this), 3000);
+                    } else {
+                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    }
                     if (this.matchCount === this.cards.length / 2) {
                         this.playerWins();
                     }
                 } else {
                     this.attempts++;
                     this.accuracy();
-                    setTimeout(this.revertClickedCards.bind(this), this.revertTime);
+                    if (this.clickedCardsList[0].getID() === "michael" &&
+                        this.clickedCardsList[1].getID() === "toby" ||
+                        this.clickedCardsList[0].getID() === "toby" &&
+                        this.clickedCardsList[1].getID() === "michael") {
+                            this.playerAudio("michaeltoby");
+                            setTimeout(this.revertClickedCards.bind(this), 6700);
+                    } else if (this.clickedCardsList[0].getID() === "dwight" &&
+                        this.clickedCardsList[1].getID() === "jim" ||
+                        this.clickedCardsList[0].getID() === "jim" &&
+                        this.clickedCardsList[1].getID() === "dwight") {
+                            this.playerAudio("dwightjim");
+                            setTimeout(this.revertClickedCards.bind(this), 2000);
+                    } else {
+                        setTimeout(this.revertClickedCards.bind(this), this.revertTime);
+                    }
                 }
             }
+        }
+    }
+
+    this.playerAudio = function (characters) {
+        var characterReaction = new Audio;
+        characterReaction.src = 'audio/' + characters + '.mp3';
+        characterReaction.play();
+        
+        if(characters === "michaeltoby"){
+            characterReaction.currentTime = 3;
         }
     }
 
@@ -131,7 +161,7 @@ function MemoryMatchGame() {
 
     this.accuracy = function () {
         var calculatedAccuracy = Math.round((this.matchCount / this.attempts) * 100);
-        if(this.attempts !== 0){
+        if (this.attempts !== 0) {
             return calculatedAccuracy
         } else {
             return 0
@@ -165,7 +195,7 @@ function MemoryMatchGame() {
                             Victory Modal
 
     =================================================================*/
-    this.handleCloseX = function () {
+    this.handleModalClose = function () {
         $(".close").click(this.closeModalX.bind(this));
     }
 
