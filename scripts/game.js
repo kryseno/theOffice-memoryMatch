@@ -105,7 +105,7 @@ function MemoryMatchGame() {
                         this.clickedCardsList[0].getID() === "toby" &&
                         this.clickedCardsList[1].getID() === "michael") {
                             this.playerAudio("michael" + "toby");
-                            setTimeout(this.revertClickedCards.bind(this), 6500);
+                            setTimeout(this.revertClickedCards.bind(this), 6700);
                     } else if (this.clickedCardsList[0].getID() === "dwight" &&
                         this.clickedCardsList[1].getID() === "jim" ||
                         this.clickedCardsList[0].getID() === "jim" &&
