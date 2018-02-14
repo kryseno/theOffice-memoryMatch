@@ -50,7 +50,9 @@ function Card(frontImg, backImg, parentObj) {
     }
 
     this.cardMatch = function(){
-        this.renderedElement.fadeTo(400, 0);
+        this.renderedElement.fadeTo(400, 0, function(){
+            $(this).addClass('hidden');
+        });
     }
 
     this.getID = function(){
