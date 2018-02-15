@@ -222,6 +222,7 @@ function MemoryMatchGame() {
         if (audio[0].paused) {
             $("#audioBtn").removeClass('fa-volume-off');
             $("#audioBtn").addClass('fa-volume-up');
+            audio[0].volume = 0.3;
             audio[0].play();
         } else {
             $("#audioBtn").removeClass('fa-volume-up');
