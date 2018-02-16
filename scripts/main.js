@@ -9,7 +9,7 @@ function initializeApp() {
 
 function loader() {
     var handleLoader;
-    handleloader = setTimeout(showContent, 3000);
+    handleloader = setTimeout(showContent, 2000);
 }
 
 function showContent() {
