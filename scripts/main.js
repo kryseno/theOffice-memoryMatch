@@ -1,5 +1,6 @@
 $(document).ready(initializeApp);
 var game = null;
+var handleLoader = null;
 
 function initializeApp() {
     game = new MemoryMatchGame();
@@ -8,7 +9,6 @@ function initializeApp() {
 }
 
 function loader() {
-    var handleLoader;
     handleloader = setTimeout(showContent, 2000);
 }
 
