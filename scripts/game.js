@@ -98,13 +98,13 @@ function MemoryMatchGame() {
                         this.clickedCardsList[0].getID() === "toby" &&
                         this.clickedCardsList[1].getID() === "michael") {
                             this.playerAudio("michaeltoby");
-                            setTimeout(this.revertClickedCards.bind(this), 6700);
+                            setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                     } else if (this.clickedCardsList[0].getID() === "dwight" &&
                         this.clickedCardsList[1].getID() === "jim" ||
                         this.clickedCardsList[0].getID() === "jim" &&
                         this.clickedCardsList[1].getID() === "dwight") {
                             this.playerAudio("dwightjim");
-                            setTimeout(this.revertClickedCards.bind(this), 2000);
+                            setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                     } else {
                         setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                     }
@@ -117,10 +117,6 @@ function MemoryMatchGame() {
         var characterReaction = new Audio;
         characterReaction.src = 'audio/' + characters + '.mp3';
         characterReaction.play();
-        
-        if(characters === "michaeltoby"){
-            characterReaction.currentTime = 3;
-        }
     }
 
     this.playerWins = function () {
@@ -222,7 +218,7 @@ function MemoryMatchGame() {
         if (audio[0].paused) {
             $("#audioBtn").removeClass('fa-volume-off');
             $("#audioBtn").addClass('fa-volume-up');
-            audio[0].volume = 0.3;
+            audio[0].volume = 0.1;
             audio[0].play();
         } else {
             $("#audioBtn").removeClass('fa-volume-up');
