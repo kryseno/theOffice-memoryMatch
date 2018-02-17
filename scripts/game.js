@@ -69,21 +69,24 @@ function MemoryMatchGame() {
     =================================================================*/
     this.handleCardClick = function (cardObjClicked) {
         if (this.clickedCardsList.length < 2) {
-            if (this.clickedCardsList[0] == cardObjClicked) {
+            if (cardOne == cardObjClicked) {
                 return;
             }
             this.clickedCardsList.push(cardObjClicked);
             cardObjClicked.revealSelf();
 
             if (this.clickedCardsList.length === 2) {
-                if (this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()) {
+                var cardOne = this.clickedCardsList[0];
+                var cardTwo = this.clickedCardsList[1];
+                
+                if (cardOne.getID() === cardTwo.getID()) {
                     this.matchCount++;
                     this.attempts++
                     this.accuracy();
-                    if (this.clickedCardsList[0].getID() === "michael") {
+                    if (cardOne.getID() === "michael") {
                         this.playerAudio("michael");
                         setTimeout(this.hideCardMatch.bind(this), 3000);
-                    } else if (this.clickedCardsList[0].getID() === "andy") {
+                    } else if (cardOne.getID() === "andy") {
                         this.playerAudio("andy");
                         setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     } else {
@@ -95,16 +98,16 @@ function MemoryMatchGame() {
                 } else {
                     this.attempts++;
                     this.accuracy();
-                    if (this.clickedCardsList[0].getID() === "michael" &&
-                        this.clickedCardsList[1].getID() === "toby" ||
-                        this.clickedCardsList[0].getID() === "toby" &&
-                        this.clickedCardsList[1].getID() === "michael") {
+                    if (cardOne.getID() === "michael" &&
+                        cardTwo.getID() === "toby" ||
+                        cardOne.getID() === "toby" &&
+                        cardTwo.getID() === "michael") {
                             this.playerAudio("michaeltoby");
                             setTimeout(this.revertClickedCards.bind(this), this.revertTime);
-                    } else if (this.clickedCardsList[0].getID() === "dwight" &&
-                        this.clickedCardsList[1].getID() === "jim" ||
-                        this.clickedCardsList[0].getID() === "jim" &&
-                        this.clickedCardsList[1].getID() === "dwight") {
+                    } else if (cardOne.getID() === "dwight" &&
+                        cardTwo.getID() === "jim" ||
+                        cardOne.getID() === "jim" &&
+                        cardTwo.getID() === "dwight") {
                             this.playerAudio("dwightjim");
                             setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                     } else {
