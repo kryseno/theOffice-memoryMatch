@@ -86,36 +86,26 @@ function MemoryMatchGame() {
                     this.accuracy();
                     if (cardOne.getID() === "andy") {
                         this.playerAudio("andy");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     } else if (cardOne.getID() === "dwight") {
                         this.playerAudio("dwight");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     } else if (cardOne.getID() === "gabe") {
                         this.playerAudio("gabe");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     } else if (cardOne.getID() === "jim") {
                         this.playerAudio("jim");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     } else if (cardOne.getID() === "kevin") {
                         this.playerAudio("kevin");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     } else if (cardOne.getID() === "michael") {
                             this.playerAudio("michael");
-                            setTimeout(this.hideCardMatch.bind(this), 3000);
                     } else if (cardOne.getID() === "pam") {
                         this.playerAudio("pam");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     } else if (cardOne.getID() === "stanley") {
                         this.playerAudio("stanley");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     } else if (cardOne.getID() === "toby") {
                         this.playerAudio("toby");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
-                    } else {
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     }
+                    setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if (this.matchCount === this.cards.length / 2) {
-                        this.playerWins();
+                        setTimeout(this.playerWins.bind(this), this.revertTime);
                     }
                 } else {
                     this.attempts++;
