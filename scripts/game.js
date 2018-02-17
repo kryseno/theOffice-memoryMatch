@@ -68,22 +68,49 @@ function MemoryMatchGame() {
 
     =================================================================*/
     this.handleCardClick = function (cardObjClicked) {
+        var cardOne = this.clickedCardsList[0];
+
         if (this.clickedCardsList.length < 2) {
-            if (this.clickedCardsList[0] == cardObjClicked) {
+            if (cardOne == cardObjClicked) {
                 return;
             }
             this.clickedCardsList.push(cardObjClicked);
             cardObjClicked.revealSelf();
 
             if (this.clickedCardsList.length === 2) {
-                if (this.clickedCardsList[0].getID() === this.clickedCardsList[1].getID()) {
+                var cardTwo = this.clickedCardsList[1];
+
+                if (cardOne.getID() === cardTwo.getID()) {
                     this.matchCount++;
                     this.attempts++
                     this.accuracy();
-                    if (this.clickedCardsList[0].getID() === "michael" &&
-                        this.clickedCardsList[1].getID() === "michael") {
+                    if (cardOne.getID() === "andy") {
+                        this.playerAudio("andy");
+                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    } else if (cardOne.getID() === "dwight") {
+                        this.playerAudio("dwight");
+                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    } else if (cardOne.getID() === "gabe") {
+                        this.playerAudio("gabe");
+                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    } else if (cardOne.getID() === "jim") {
+                        this.playerAudio("jim");
+                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    } else if (cardOne.getID() === "kevin") {
+                        this.playerAudio("kevin");
+                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    } else if (cardOne.getID() === "michael") {
                             this.playerAudio("michael");
                             setTimeout(this.hideCardMatch.bind(this), 3000);
+                    } else if (cardOne.getID() === "pam") {
+                        this.playerAudio("pam");
+                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    } else if (cardOne.getID() === "stanley") {
+                        this.playerAudio("stanley");
+                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    } else if (cardOne.getID() === "toby") {
+                        this.playerAudio("toby");
+                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     } else {
                         setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     }
@@ -93,16 +120,16 @@ function MemoryMatchGame() {
                 } else {
                     this.attempts++;
                     this.accuracy();
-                    if (this.clickedCardsList[0].getID() === "michael" &&
-                        this.clickedCardsList[1].getID() === "toby" ||
-                        this.clickedCardsList[0].getID() === "toby" &&
-                        this.clickedCardsList[1].getID() === "michael") {
+                    if (cardOne.getID() === "michael" &&
+                        cardTwo.getID() === "toby" ||
+                        cardOne.getID() === "toby" &&
+                        cardTwo.getID() === "michael") {
                             this.playerAudio("michaeltoby");
                             setTimeout(this.revertClickedCards.bind(this), this.revertTime);
-                    } else if (this.clickedCardsList[0].getID() === "dwight" &&
-                        this.clickedCardsList[1].getID() === "jim" ||
-                        this.clickedCardsList[0].getID() === "jim" &&
-                        this.clickedCardsList[1].getID() === "dwight") {
+                    } else if (cardOne.getID() === "dwight" &&
+                        cardTwo.getID() === "jim" ||
+                        cardOne.getID() === "jim" &&
+                        cardTwo.getID() === "dwight") {
                             this.playerAudio("dwightjim");
                             setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                     } else {
@@ -213,6 +240,7 @@ function MemoryMatchGame() {
     this.handleAudio = function () {
         $(".audio").on("click", "#audioBtn", this.controlSound.bind(this));
     }
+
     this.controlSound = function () {
         var audio = $("audio");
         if (audio[0].paused) {
