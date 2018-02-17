@@ -80,8 +80,7 @@ function MemoryMatchGame() {
                     this.matchCount++;
                     this.attempts++
                     this.accuracy();
-                    if (this.clickedCardsList[0].getID() === "michael" &&
-                        this.clickedCardsList[1].getID() === "michael") {
+                    if (this.clickedCardsList[0].getID() === "michael") {
                             this.playerAudio("michael");
                             setTimeout(this.hideCardMatch.bind(this), 3000);
                     } else {
