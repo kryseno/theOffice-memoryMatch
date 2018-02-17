@@ -84,53 +84,34 @@ function MemoryMatchGame() {
                     this.matchCount++;
                     this.attempts++
                     this.accuracy();
-                    if (cardOne.getID() === "andy") {
-                        this.playerAudio("andy");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
-                    } else if (cardOne.getID() === "dwight") {
-                        this.playerAudio("dwight");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
-                    } else if (cardOne.getID() === "gabe") {
-                        this.playerAudio("gabe");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
-                    } else if (cardOne.getID() === "jim") {
-                        this.playerAudio("jim");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
-                    } else if (cardOne.getID() === "kevin") {
-                        this.playerAudio("kevin");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
-                    } else if (cardOne.getID() === "michael") {
-                            this.playerAudio("michael");
-                            setTimeout(this.hideCardMatch.bind(this), 3000);
-                    } else if (cardOne.getID() === "pam") {
-                        this.playerAudio("pam");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
-                    } else if (cardOne.getID() === "stanley") {
-                        this.playerAudio("stanley");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
-                    } else if (cardOne.getID() === "toby") {
-                        this.playerAudio("toby");
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
-                    } else {
-                        setTimeout(this.hideCardMatch.bind(this), this.revertTime);
+                    for(var i=0; i<this.imageList.length; i++){
+                        if (cardOne.getID() === this.imageList[i]) {
+                            this.playerAudio(this.imageList[i]+'');
+                        }
                     }
+                    setTimeout(this.hideCardMatch.bind(this), this.revertTime);
                     if (this.matchCount === this.cards.length / 2) {
-                        this.playerWins();
+                        setTimeout(this.playerWins.bind(this), this.revertTime);
                     }
                 } else {
                     this.attempts++;
                     this.accuracy();
-                    if (cardOne.getID() === "michael" &&
-                        cardTwo.getID() === "toby" ||
-                        cardOne.getID() === "toby" &&
-                        cardTwo.getID() === "michael") {
-                            this.playerAudio("michaeltoby");
+                    var michael = this.imageList[5];
+                    var toby = this.imageList[8];
+                    var dwight = this.imageList[1];
+                    var jim = this.imageList[3];
+
+                    if (cardOne.getID() === michael &&
+                        cardTwo.getID() === toby ||
+                        cardOne.getID() === toby &&
+                        cardTwo.getID() === michael) {
+                            this.mismatchAudio("michaeltoby");
                             setTimeout(this.revertClickedCards.bind(this), this.revertTime);
-                    } else if (cardOne.getID() === "dwight" &&
-                        cardTwo.getID() === "jim" ||
-                        cardOne.getID() === "jim" &&
-                        cardTwo.getID() === "dwight") {
-                            this.playerAudio("dwightjim");
+                    } else if (cardOne.getID() === dwight &&
+                        cardTwo.getID() === jim ||
+                        cardOne.getID() === jim &&
+                        cardTwo.getID() === dwight) {
+                            this.mismatchAudio("dwightjim");
                             setTimeout(this.revertClickedCards.bind(this), this.revertTime);
                     } else {
                         setTimeout(this.revertClickedCards.bind(this), this.revertTime);
@@ -140,7 +121,17 @@ function MemoryMatchGame() {
         }
     }
 
-    this.playerAudio = function (characters) {
+    this.playerAudio = function (character) {
+        var positionBeforeName = character.indexOf('/');
+        var positionAfterName = character.lastIndexOf('.');
+        var names = character.slice(positionBeforeName+1, positionAfterName);
+
+        var characterReaction = new Audio;
+        characterReaction.src = 'audio/' + names + '.mp3';
+        characterReaction.play();
+    }
+
+    this.mismatchAudio = function (characters) {
         var characterReaction = new Audio;
         characterReaction.src = 'audio/' + characters + '.mp3';
         characterReaction.play();

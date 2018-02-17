@@ -56,9 +56,6 @@ function Card(frontImg, backImg, parentObj) {
     }
 
     this.getID = function(){
-        var findBeforeImgName = this.frontImg.indexOf('/');
-        var findAfterImgName = this.frontImg.lastIndexOf('.');
-        var cardID = frontImg.slice(findBeforeImgName+1, findAfterImgName);
-        return cardID;
+        return frontImg;
     }
 }
