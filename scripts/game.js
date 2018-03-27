@@ -191,17 +191,18 @@ function MemoryMatchGame() {
     }
 
     this.resetStats = function () {
-        if(!this.gamesPlayed && this.attempts){
-            this.gamesPlayed++;
-            this.attempts = 0;
-            this.matchCount = 0;
-            $(".games-played .value").text(this.gamesPlayed);
-            this.displayStats();
-        }
+        this.gamesPlayed++;
+        this.attempts = 0;
+        this.matchCount = 0;
+        $(".games-played .value").text(this.gamesPlayed);
+        this.displayStats();
     }
 
     this.resetGame = function () {
-        this.resetStats();
+        if(this.attempts > 0){
+            $("#reset").removeClass('disabled').addClass('enabled');
+            this.resetStats();
+        }
         this.clearGameArea();
         this.setupCardImgs();
     }
