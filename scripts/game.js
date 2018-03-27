@@ -199,10 +199,7 @@ function MemoryMatchGame() {
     }
 
     this.resetGame = function () {
-        if(this.attempts > 0){
-            $("#reset").removeClass('disabled').addClass('enabled');
-            this.resetStats();
-        }
+        this.resetStats();
         this.clearGameArea();
         this.setupCardImgs();
     }
