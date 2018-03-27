@@ -67,7 +67,7 @@ body {
     text-align: center;
     background: rgba(255, 255, 255, 0.5);
     color: white;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0;
 }
 
 .header img {
@@ -93,7 +93,7 @@ body {
     background: rgba(255, 255, 255, 0.5);
     text-align: center;
     text-transform: uppercase;
-    border-radius: 8px;
+    border-radius: 0 0 0 8px;
     box-sizing: border-box;
     font-size: 20px;
 }
@@ -139,7 +139,7 @@ body {
     height: 75%;
     float: right;
     background: rgba(255, 255, 255, 0.5);
-    border-radius: 8px;
+    border-radius: 0 0 8px 0;
     display: inline-flex;
     flex-flow: row wrap;
     align-content: center;
