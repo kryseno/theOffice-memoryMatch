@@ -191,11 +191,13 @@ function MemoryMatchGame() {
     }
 
     this.resetStats = function () {
-        this.gamesPlayed++;
-        this.attempts = 0;
-        this.matchCount = 0;
-        $(".games-played .value").text(this.gamesPlayed);
-        this.displayStats();
+        if(!this.gamesPlayed && this.attempts){
+            this.gamesPlayed++;
+            this.attempts = 0;
+            this.matchCount = 0;
+            $(".games-played .value").text(this.gamesPlayed);
+            this.displayStats();
+        }
     }
 
     this.resetGame = function () {
