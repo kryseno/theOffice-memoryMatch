@@ -5,12 +5,10 @@ var handleLoader = null;
 function initializeApp() {
     game = new MemoryMatchGame();
     game.initializeGame();
-    loader();
+    // loader();
 }
 
-function loader() {
-    handleloader = setTimeout(showContent, 2000);
-}
+$(window).on("load", showContent);
 
 function showContent() {
     $("#loader").css("display", "none");
