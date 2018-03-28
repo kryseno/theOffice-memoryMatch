@@ -5,7 +5,6 @@ var handleLoader = null;
 function initializeApp() {
     game = new MemoryMatchGame();
     game.initializeGame();
-    // loader();
 }
 
 $(window).on("load", showContent);
